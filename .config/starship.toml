@@ -1,0 +1,16 @@
+[bun]
+symbol = '🌭 '
+
+[nodejs]
+symbol = ' '
+
+[package]
+format = 'via [📦 $version](208 bold) '
+
+[os]
+format = '[$symbol]($style)'
+disabled = false
+style = "bold white"
+
+[os.symbols]
+Macos = ' '
