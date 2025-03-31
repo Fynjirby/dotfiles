@@ -3,7 +3,9 @@ set number
 set tabstop=4   
 set shiftwidth=4   
 set expandtab    
+set hls 
 set t_vb=
+set visualbell t_vb=
 set t_Co=256
 
 highlight StatusLine cterm=NONE ctermfg=White ctermbg=NONE
