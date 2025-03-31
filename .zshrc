@@ -38,3 +38,4 @@ alias P="git push"
 alias C="git commit -a"
 alias rem="rm -rf "
 alias f='fzf --preview="bat {} --color=always"'
+alias see="watch -n 0.1 "
