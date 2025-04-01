@@ -19,7 +19,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # tmux autostart
 ZSH_TMUX_AUTOSTART=true
 
-eval $(thefuck --alias)
 eval "$(starship init zsh)"
 
 # ALIASES
