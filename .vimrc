@@ -16,6 +16,7 @@ call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-sensible'
+Plug 'ervandew/supertab'
 
 call plug#end()
 
