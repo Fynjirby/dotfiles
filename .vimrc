@@ -11,6 +11,10 @@ set t_Co=256
 highlight StatusLine cterm=NONE ctermfg=White ctermbg=NONE
 highlight StatusLineNC cterm=NONE ctermfg=Grey ctermbg=NONE
 
+highlight TabLine cterm=NONE ctermfg=White ctermbg=NONE
+highlight TabLineSel cterm=bold ctermfg=White ctermbg=NONE
+highlight TabLineFill cterm=NONE ctermfg=Grey ctermbg=NONE
+
 call plug#begin()
 
 Plug 'preservim/nerdtree'
@@ -20,6 +24,9 @@ Plug 'ervandew/supertab'
 
 call plug#end()
 
+" Keymaps
+nnoremap gn :tabnew<CR>
+nnoremap gc :tabclose<CR>
 nnoremap <C-f> :NERDTreeToggle<CR>
 " Ignore arrows in insert mode
 inoremap <Up> <Nop>
