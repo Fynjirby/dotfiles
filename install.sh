@@ -6,6 +6,7 @@ echo "moving configs (may require user password)"
 sudo mv dotfiles/.vimrc ~/.vimrc
 sudo mv dotfiles/.zshrc ~/.zshrc
 sudo mv dotfiles/.tmux.conf ~/.tmux.conf
+sudo mkdir ~/.config
 sudo mv dotfiles/.config/starship.toml ~/.config/starship.toml 
 echo "moved successfully"
 
