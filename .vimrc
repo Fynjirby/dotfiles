@@ -18,9 +18,10 @@ highlight TabLineFill cterm=NONE ctermfg=Grey ctermbg=NONE
 call plug#begin()
 
 Plug 'preservim/nerdtree'
-Plug 'sheerun/vim-polyglot'
+Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-sensible'
 Plug 'ervandew/supertab'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
@@ -28,6 +29,9 @@ call plug#end()
 nnoremap gn :tabnew<CR>
 nnoremap gc :tabclose<CR>
 nnoremap <C-f> :NERDTreeToggle<CR>
+nnoremap gid :Gvdiffsplit<CR>
+" No search result highlight on Escape press
+nnoremap <Esc> :noh<CR>
 " Ignore arrows in insert mode
 inoremap <Up> <Nop>
 inoremap <Down> <Nop>
