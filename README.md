@@ -5,7 +5,7 @@ sorry if they are kinda ugly or not super pro's but i use it and like it
 - zsh config in .zshrc
 - tmux config in .tmux.conf
 - starship config in .config/starship.toml
-- alacritty config in .config/alacritty/alacritty.toml
+- alacritty config in .config/alacritty.toml
 - zed config in .config/zed/settings.json
 
 ### do it faster with this command in terminal
