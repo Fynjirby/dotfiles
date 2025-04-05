@@ -4,6 +4,10 @@ set tabstop=4
 set shiftwidth=4   
 set expandtab    
 set hls 
+set ruler
+set ic
+set smartcase
+set signcolumn=yes
 set t_vb=
 set visualbell t_vb=
 set t_Co=256
@@ -15,6 +19,8 @@ highlight TabLine cterm=NONE ctermfg=White ctermbg=NONE
 highlight TabLineSel cterm=bold ctermfg=White ctermbg=NONE
 highlight TabLineFill cterm=NONE ctermfg=Grey ctermbg=NONE
 
+highlight SignColumn ctermbg=234 guibg=#181818
+
 call plug#begin()
 
 Plug 'preservim/nerdtree'
@@ -22,36 +28,41 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-sensible'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'sbdchd/neoformat'
 
 call plug#end()
 
+" Auto format on save
+autocmd BufWritePre * :Neoformat
+
 " Keymaps
-nnoremap gn :tabnew<CR>
-nnoremap gc :tabclose<CR>
-nnoremap <C-f> :NERDTreeToggle<CR>
-nnoremap gid :Gvdiffsplit<CR>
-" No search result highlight on Escape press
-nnoremap <Esc> :noh<CR>
+nmap H ^
+nmap L $
+nmap 0f :Neoformat<CR>
+nmap gn :tabnew<CR>
+nmap gc :tabclose<CR>
+nmap <C-f> :NERDTreeToggle<CR>
+nmap gid :Gvdiffsplit<CR>
+
+" No search results highlight on Escape press
+nmap <Esc> :noh<CR>
+
 " Ignore arrows in insert mode
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
+imap <Up> <Nop>
+imap <Down> <Nop>
+imap <Left> <Nop>
+imap <Right> <Nop>
+
 " Ignore arrows in normal mode
-nnoremap <Up> <Nop>
-nnoremap <Down> <Nop>
-nnoremap <Left> <Nop>
-nnoremap <Right> <Nop>
+nmap <Up> <Nop>
+nmap <Down> <Nop>
+nmap <Left> <Nop>
+nmap <Right> <Nop>
+
 " Ignore arrows in visual mode
-vnoremap <Up> <Nop>
-vnoremap <Down> <Nop>
-vnoremap <Left> <Nop>
-vnoremap <Right> <Nop>
-" Auto close
-inoremap " ""<left>
-inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap [ []<left>
-inoremap { {}<left>
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
+vmap <Up> <Nop>
+vmap <Down> <Nop>
+vmap <Left> <Nop>
+vmap <Right> <Nop>
+
