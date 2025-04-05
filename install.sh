@@ -1,4 +1,4 @@
-echo "LOG: .vimrc, .zshrc, .tmux.conf will be cloned from github to your pc and moved to ~ "
+echo "LOG: .vimrc, .zshrc, .tmux.conf, starship.toml and alacritty.toml will be cloned from github to your pc and moved to ~ "
 git clone https://github.com/Fynjirby/dotfiles.git dotfiles
 echo "LOG: cloned successfully"
 
@@ -7,6 +7,7 @@ sudo mv dotfiles/.vimrc ~/.vimrc
 sudo mv dotfiles/.zshrc ~/.zshrc
 sudo mv dotfiles/.tmux.conf ~/.tmux.conf
 sudo mkdir ~/.config
+sudo mv dotfiles/.config/alacritty.toml ~/.config/alacritty.toml
 sudo mv dotfiles/.config/starship.toml ~/.config/starship.toml 
 echo "LOG: moved successfully"
 
@@ -32,4 +33,6 @@ echo "LOG: removing temp folder"
 rm -rf ./dotfiles/
 
 echo "LOG: all installed successfully, thanks for using"
-echo "LOG: next use this command to load .zshrc \n source ~/.zshrc"
+echo "LOG: next use this command to load .zshrc"
+echo "LOG: source ~/.zshrc"
+echo "LOG: Also install alacritty from alacritty.org or via your package manager"
