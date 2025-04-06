@@ -8,6 +8,8 @@ sorry if they are kinda ugly or not super pro's but i use it and like it
 - alacritty config in .config/alacritty.toml
 - zed config in .config/zed/settings.json
 
+NOTE: tmux colors looks better in alacritty! 
+
 ### do it faster with this command in terminal
 ```bash
 curl -sSL https://raw.githubusercontent.com/fynjirby/dotfiles/main/install.sh | sh
