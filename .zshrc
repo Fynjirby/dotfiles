@@ -16,9 +16,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # bun completions
 [ -s "~/.bun/_bun" ] && source "~/.bun/_bun"
 
-# tmux autostart
-ZSH_TMUX_AUTOSTART=true
-
 eval "$(starship init zsh)"
 
 # ALIASES
