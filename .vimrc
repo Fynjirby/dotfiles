@@ -29,17 +29,17 @@ Plug 'tpope/vim-sensible'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'sbdchd/neoformat'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 
 call plug#end()
 
 " Auto format on save
-autocmd BufWritePre * :Neoformat
+autocmd BufWritePre * :Prettier
 
 " Keymaps
 nmap H ^
 nmap L $
-nmap 0f :Neoformat<CR>
+nmap 0f :Prettier<CR>
 nmap gn :tabnew<CR>
 nmap gc :tabclose<CR>
 nmap <C-f> :NERDTreeToggle<CR>
