@@ -11,6 +11,8 @@ sorry if they are kinda ugly or not super pro's but i use it and like it
 NOTE: You need to install [vim-plug](https://github.com/junegunn/vim-plug) to enable plugins
 NOTE: tmux colors looks better in alacritty! 
 
+All software listed here is open source btw :)
+
 ### do it faster with this command in terminal
 ```bash
 curl -sSL https://raw.githubusercontent.com/fynjirby/dotfiles/main/install.sh | sh
