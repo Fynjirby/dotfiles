@@ -2,8 +2,9 @@
 size = 16
 normal = {family = "FiraCode Nerd Font Mono"}
 
-[window]
-padding = {x = 5, y = 5}
+[window.padding]
+x = 5 
+y = 5
 
 [mouse]
 hide_when_typing = true
