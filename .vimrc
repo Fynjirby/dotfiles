@@ -24,7 +24,6 @@ highlight SignColumn ctermbg=234 guibg=#181818
 
 call plug#begin()
 
-Plug 'preservim/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-sensible'
 Plug 'ervandew/supertab'
@@ -37,14 +36,18 @@ call plug#end()
 " Auto format on save
 autocmd BufWritePre * :Prettier
 
+" Open files in new tab
+let g:netrw_browse_split = 3
+
 " Keymaps
 nmap H ^
 nmap L $
 nmap 0f :Prettier<CR>
 nmap gn :tabnew<CR>
 nmap gc :tabclose<CR>
-nmap <C-f> :NERDTreeToggle<CR>
 nmap gid :Gvdiffsplit<CR>
+nmap 0e :Ex<CR>
+nmap 0q :bd<CR>
 
 " No search results highlight on Escape press
 nmap <Esc> :noh<CR>
@@ -66,4 +69,3 @@ vmap <Up> <Nop>
 vmap <Down> <Nop>
 vmap <Left> <Nop>
 vmap <Right> <Nop>
-
