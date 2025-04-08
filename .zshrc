@@ -9,7 +9,6 @@ source $ZSH/oh-my-zsh.sh
 # EXPORTS
 export PATH="/opt/homebrew/bin:$PATH"
 export EDITOR=vim
-export VISUAL=vim
 export TERMINAL=alacritty
 
 # bun
@@ -27,6 +26,7 @@ alias pip="pip3"
 alias py="python3"
 alias py3="python3"
 alias clr="clear"
+alias ls="ls -a "
 alias lg="lazygit"
 alias s="git status"
 alias c="git commit -a -m "
