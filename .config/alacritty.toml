@@ -8,3 +8,7 @@ y = 5
 
 [mouse]
 hide_when_typing = true
+
+[env]
+TERM = "screen-256color"
+COLORTERM = "truecolor"
