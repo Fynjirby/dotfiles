@@ -8,6 +8,9 @@ source $ZSH/oh-my-zsh.sh
 
 # EXPORTS
 export PATH="/opt/homebrew/bin:$PATH"
+export EDITOR=vim
+export VISUAL=vim
+export TERMINAL=alacritty
 
 # bun
 export BUN_INSTALL="$HOME/.bun"
