@@ -18,7 +18,3 @@ All software listed here is open source btw :)
 ```bash
 curl -sSL https://raw.githubusercontent.com/fynjirby/dotfiles/main/install.sh | sh
 ```
-
-<br>
-
-### Check out 3 main config files on [github gist](https://gist.github.com/Fynjirby/7594bc8ad1d8b05d84b52947d191c77f)
