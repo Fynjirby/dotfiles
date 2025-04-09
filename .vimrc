@@ -21,7 +21,7 @@ highlight TabLine cterm=NONE ctermfg=White ctermbg=NONE
 highlight TabLineSel cterm=bold ctermfg=White ctermbg=NONE
 highlight TabLineFill cterm=NONE ctermfg=Grey ctermbg=NONE
 
-highlight SignColumn ctermbg=234 guibg=#181818
+highlight SignColumn ctermbg=NONE guibg=#181818
 
 call plug#begin()
 
