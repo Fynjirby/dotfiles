@@ -3,12 +3,12 @@ git clone https://github.com/Fynjirby/dotfiles.git dotfiles
 echo "LOG: cloned successfully"
 
 echo "LOG: moving configs (may require user password)"
-sudo mv dotfiles/.vimrc ~/.vimrc
-sudo mv dotfiles/.zshrc ~/.zshrc
-sudo mv dotfiles/.tmux.conf ~/.tmux.conf
-sudo mkdir ~/.config
-sudo mv dotfiles/.config/alacritty.toml ~/.config/alacritty.toml
-sudo mv dotfiles/.config/starship.toml ~/.config/starship.toml 
+mv dotfiles/.vimrc ~/.vimrc
+mv dotfiles/.zshrc ~/.zshrc
+mv dotfiles/.tmux.conf ~/.tmux.conf
+mkdir ~/.config
+mv dotfiles/.config/alacritty.toml ~/.config/alacritty.toml
+mv dotfiles/.config/starship.toml ~/.config/starship.toml 
 echo "LOG: moved successfully"
 
 echo "LOG: installing oh my zsh (if fails please check are zsh and curl installed)"
