@@ -37,6 +37,9 @@ call plug#end()
 " Auto format on save
 autocmd BufWritePre * :Prettier
 
+" Auto reload gitgutter column on edits
+autocmd BufWritePost,BufEnter,TextChanged,TextChangedI * GitGutter
+
 " Open files in new tab
 let g:netrw_browse_split = 3
 
