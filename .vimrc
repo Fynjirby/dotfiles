@@ -13,6 +13,9 @@ set signcolumn=yes
 set t_vb=
 set visualbell t_vb=
 set t_Co=256
+set undofile
+set undodir=~/.vim/undo
+set undolevels=1000
 
 highlight StatusLine cterm=NONE ctermfg=White ctermbg=NONE
 highlight StatusLineNC cterm=NONE ctermfg=Grey ctermbg=NONE
