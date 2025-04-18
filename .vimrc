@@ -16,6 +16,7 @@ set t_Co=256
 set undofile
 set undodir=~/.vim/undo
 set undolevels=1000
+set clipboard=unnamed
 
 highlight StatusLine cterm=NONE ctermfg=White ctermbg=NONE
 highlight StatusLineNC cterm=NONE ctermfg=Grey ctermbg=NONE
@@ -24,7 +25,7 @@ highlight TabLine cterm=NONE ctermfg=White ctermbg=NONE
 highlight TabLineSel cterm=bold ctermfg=White ctermbg=NONE
 highlight TabLineFill cterm=NONE ctermfg=Grey ctermbg=NONE
 
-highlight SignColumn ctermbg=NONE guibg=#181818
+highlight SignColumn none
 
 call plug#begin()
 
@@ -54,7 +55,6 @@ nmap gn :tabnew<CR>
 nmap gc :tabclose<CR>
 nmap gid :Gvdiffsplit<CR>
 nmap 0e :Ex<CR>
-nmap 0q :bd<CR>
 
 " No search results highlight on Escape press
 nmap <Esc> :noh<CR>
