@@ -1,17 +1,20 @@
-echo "LOG: .vimrc, .zshrc, .tmux.conf, starship.toml and alacritty.toml will be cloned from github to your pc and moved to ~ "
+echo "LOG: .vimrc, .zshrc, .tmux.conf, starship.toml and alacritty.toml will be cloned from github to your pc and moved to ~/"
 git clone https://github.com/Fynjirby/dotfiles.git dotfiles
 echo "LOG: cloned successfully"
 
 echo "LOG: moving configs (may require user password)"
-mv ~/.vimrc ~/.vimrc.old
-mv ~/.zshrc ~/.zshrc.old
-mv ~/.tmux.conf ~/.tmux.conf.old
+echo "LOG: backing up old configs to ~/.old"
+mkdir ~/.old
+mv ~/.vimrc ~/.old/.vimrc
+mv ~/.zshrc ~/.old/.zshrc
+mv ~/.tmux.conf ~/.old/.tmux.conf
+mv ~/.config/alacritty.toml ~/.old/alacritty.toml
+mv ~/.config/starship.toml ~/.old/starship.toml
+echo "LOG: moving new configs"
 mv dotfiles/.vimrc ~/.vimrc
 mv dotfiles/.zshrc ~/.zshrc
 mv dotfiles/.tmux.conf ~/.tmux.conf
 mkdir ~/.config
-mv ~/.config/alacritty.toml ~/.config/alacritty.toml.old
-mv ~/.config/starship.toml ~/.config/starship.toml.old
 mv dotfiles/.config/alacritty.toml ~/.config/alacritty.toml
 mv dotfiles/.config/starship.toml ~/.config/starship.toml 
 echo "LOG: moved successfully"
