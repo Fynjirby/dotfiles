@@ -3,14 +3,6 @@ git clone https://github.com/Fynjirby/dotfiles.git dotfiles
 echo "LOG: cloned successfully"
 
 echo "LOG: moving configs (may require user password)"
-echo "LOG: backing up old configs to ~/.old"
-mkdir ~/.old
-mv ~/.vimrc ~/.old/.vimrc
-mv ~/.zshrc ~/.old/.zshrc
-mv ~/.tmux.conf ~/.old/.tmux.conf
-mv ~/.config/alacritty.toml ~/.old/alacritty.toml
-mv ~/.config/starship.toml ~/.old/starship.toml
-echo "LOG: moving new configs"
 mv dotfiles/.vimrc ~/.vimrc
 mv dotfiles/.zshrc ~/.zshrc
 mv dotfiles/.tmux.conf ~/.tmux.conf
