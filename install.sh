@@ -29,6 +29,9 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 echo "LOG: vim plug installed successfully"
 
+mkdir -p ~/.vim/undo
+echo "LOG: created ~/.vim/undo to turn on undo in vim"
+
 echo "LOG: removing temp folder"
 rm -rf ./dotfiles/
 
