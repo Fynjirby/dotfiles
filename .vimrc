@@ -4,8 +4,9 @@ set background=dark
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set wrap
 set noswapfile
-set hls 
+set hls
 set ruler
 set ic
 set smartcase
@@ -34,12 +35,11 @@ Plug 'tpope/vim-sensible'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 
 call plug#end()
 
 " Auto format on save
-autocmd BufWritePre * :Prettier
+autocmd BufWritePre * normal! gg=G
 
 " Auto reload gitgutter column on edits
 autocmd BufWritePost,BufEnter,TextChanged,TextChangedI * GitGutter
