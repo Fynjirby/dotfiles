@@ -36,3 +36,4 @@ alias C="git commit -a"
 alias rem="rm -rf "
 alias f='fzf --preview="bat {} --color=always"'
 alias see="watch -n 0.1 "
+alias fin="rg --files | sort | uniq | fzf"
