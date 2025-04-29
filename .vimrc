@@ -19,12 +19,12 @@ set undodir=~/.vim/undo
 set undolevels=1000
 set clipboard=unnamed
 
-highlight StatusLine cterm=NONE ctermfg=White ctermbg=NONE
-highlight StatusLineNC cterm=NONE ctermfg=Grey ctermbg=NONE
+highlight StatusLine none
+highlight StatusLineNC none
 
-highlight TabLine cterm=NONE ctermfg=White ctermbg=NONE
-highlight TabLineSel cterm=bold ctermfg=White ctermbg=NONE
-highlight TabLineFill cterm=NONE ctermfg=Grey ctermbg=NONE
+highlight TabLine none
+highlight TabLineSel none cterm=bold
+highlight TabLineFill none
 
 highlight SignColumn none
 
@@ -37,9 +37,6 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
 call plug#end()
-
-" Auto format on save
-autocmd BufWritePre * normal! gg=G
 
 " Auto reload gitgutter column on edits
 autocmd BufWritePost,BufEnter,TextChanged,TextChangedI * GitGutter
