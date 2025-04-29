@@ -10,7 +10,7 @@ set hls
 set ruler
 set ic
 set smartcase
-set signcolumn=yes
+set signcolumn=auto
 set t_vb=
 set visualbell t_vb=
 set t_Co=256
