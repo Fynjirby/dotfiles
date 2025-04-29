@@ -2,7 +2,23 @@ echo "LOG: .vimrc, .zshrc, .tmux.conf, starship.toml and alacritty.toml will be 
 git clone https://github.com/Fynjirby/dotfiles.git dotfiles
 echo "LOG: cloned successfully"
 
-echo "LOG: moving configs (may require user password)"
+echo "LOG: moving old configs to ~/.old"
+mkdir ~/.old
+mv ~/.vimrc ~/.old/.vimrc
+mv ~/.zshrc ~/.old/.zshrc
+mv ~/.tmux.conf ~/.old/.tmux.conf
+mkdir ~/.old/.config
+mv ~/.config/alacritty.toml ~/.old/.config/alacritty.toml
+mv ~/.config/starship.toml ~/.old/.config/starship.toml 
+echo "LOG: moved successfully"
+
+rm -rf ~/.vimrc
+rm -rf ~/.zshrc
+rm -rf ~/.tmux.conf
+rm -rf ~/.config/alacritty.toml
+rm -rf ~/.config/starship.toml
+
+echo "LOG: moving new configs (may require user password)"
 mv dotfiles/.vimrc ~/.vimrc
 mv dotfiles/.zshrc ~/.zshrc
 mv dotfiles/.tmux.conf ~/.tmux.conf
