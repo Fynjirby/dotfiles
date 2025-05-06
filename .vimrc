@@ -10,14 +10,14 @@ set hls
 set ruler
 set ic
 set smartcase
-set signcolumn=auto
+set signcolumn=yes
 set t_vb=
 set visualbell t_vb=
 set t_Co=256
 set undofile
 set undodir=~/.vim/undo
 set undolevels=1000
-set clipboard=unnamed
+set clipboard=unnamed "plus for linux
 
 highlight StatusLine none
 highlight StatusLineNC none
