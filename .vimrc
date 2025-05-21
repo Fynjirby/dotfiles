@@ -35,11 +35,15 @@ Plug 'tpope/vim-sensible'
 Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
 
 " Auto reload gitgutter column on edits
 autocmd BufWritePost,BufEnter,TextChanged,TextChangedI * GitGutter
+
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 " Open files in new tab
 let g:netrw_browse_split = 3

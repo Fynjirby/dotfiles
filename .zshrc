@@ -38,3 +38,4 @@ alias f='fzf --preview="bat {} --color=always"'
 alias see="watch -n 0.1 "
 alias fin="rg --files | sort | uniq | fzf"
 alias n="nnn"
+alias code="open Visual\ Studio\ Code.app"
