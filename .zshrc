@@ -41,3 +41,8 @@ alias fin="rg --files | sort | uniq | fzf"
 alias n="nnn"
 alias code="open Visual\ Studio\ Code.app"
 alias yank="pbcopy"
+alias localip="ipconfig getifaddr en0"
+
+if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
+  tmux attach -t default 2>/dev/null || tmux new -s default
+fi

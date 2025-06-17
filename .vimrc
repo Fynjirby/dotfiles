@@ -45,9 +45,6 @@ autocmd BufWritePost,BufEnter,TextChanged,TextChangedI * GitGutter
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 
-" Open files in new tab
-let g:netrw_browse_split = 3
-
 " Keymaps
 let mapleader = "," 
 nmap H ^
