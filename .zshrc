@@ -42,6 +42,8 @@ alias n="nnn"
 alias code="open Visual\ Studio\ Code.app"
 alias yank="pbcopy"
 alias localip="ipconfig getifaddr en0"
+alias pacman="sudo pacman"
+alias docker="sudo docker"
 
 if command -v tmux &>/dev/null && [ -z "$TMUX" ]; then
   tmux attach -t default 2>/dev/null || tmux new -s default
