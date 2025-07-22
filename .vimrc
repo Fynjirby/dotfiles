@@ -49,6 +49,8 @@ let g:go_info_mode='gopls'
 let mapleader = "," 
 nmap H ^
 nmap L $
+vmap H ^
+vmap L $
 nmap <leader>n :tabnew<CR>
 nmap <leader>c :tabclose<CR>
 nmap <leader>g :Gvdiffsplit<CR>
