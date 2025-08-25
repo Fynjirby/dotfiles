@@ -2,9 +2,13 @@
 size = 18
 normal = {family = "FiraCode Nerd Font Mono"}
 
+[window]
+startup_mode = "Maximized"
+decorations = "Transparent"
+
 [window.padding]
-x = 5 
-y = 5
+x = 10
+y = 25
 
 [mouse]
 hide_when_typing = true

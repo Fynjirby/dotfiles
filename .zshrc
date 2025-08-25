@@ -1,23 +1,34 @@
-if status is-interactive
-    # Commands to run in interactive sessions can go here
-end
+export ZSH="$HOME/.oh-my-zsh"
 
-# looota exports
-set -gx PATH /opt/homebrew/bin $PATH
-set -gx PATH $HOME/go/bin $PATH
-set -gx EDITOR vim
-set -gx TERMINAL alacritty
+ZSH_THEME="robbyrussell"
 
-set -gx BUN_INSTALL $HOME/.bun
-set -gx PATH $BUN_INSTALL/bin $PATH
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions brew tmux)
 
-# aliases
+source $ZSH/oh-my-zsh.sh
+
+# EXPORTS
+export PATH="/opt/homebrew/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
+export EDITOR=vim
+export TERMINAL=alacritty
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# bun completions
+[ -s "~/.bun/_bun" ] && source "~/.bun/_bun"
+
+eval "$(starship init zsh)"
+
+# ALIASES
 alias python="python3"
 alias pip="pip3"
 alias py="python3"
 alias py3="python3"
 alias clr="clear"
 alias ls="ls -a "
+alias cat="bat"
 alias lg="lazygit"
 alias s="git status"
 alias c="git commit -a -m "
