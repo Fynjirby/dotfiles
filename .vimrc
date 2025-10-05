@@ -17,7 +17,7 @@ set t_Co=256
 set undofile
 set undodir=~/.vim/undo
 set undolevels=1000
-set clipboard=unnamed "plus for linux
+set clipboard=unnamedplus "plus for linux
 
 highlight StatusLine none
 highlight StatusLineNC none
