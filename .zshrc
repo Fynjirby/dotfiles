@@ -40,11 +40,9 @@ alias f='fzf --preview="bat {} --color=always"'
 alias see="watch -n 0.1 "
 alias fin="rg --files | sort | uniq | fzf"
 alias n="nnn"
-alias code="open Visual\ Studio\ Code.app"
 alias yank="pbcopy"
 alias localip="ipconfig getifaddr en0"
 
-alias pacman="sudo pacman"
 alias docker="sudo docker"
 
 export PROMPT_EOL_MARK=""
