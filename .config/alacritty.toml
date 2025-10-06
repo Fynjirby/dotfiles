@@ -4,7 +4,6 @@ normal = {family = "FiraCode Nerd Font Mono"}
 
 [window]
 startup_mode = "Maximized"
-decorations = "Transparent"
 
 [window.padding]
 x = 5
