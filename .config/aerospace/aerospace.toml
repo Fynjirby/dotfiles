@@ -143,10 +143,10 @@ alt-shift-semicolon = 'mode service'
 
 [mode.resize.binding]
 esc = 'mode main'     
-h = 'resize width -20' 
+h = 'resize width +20' 
 j = 'resize height -20'
 k = 'resize height +20'   
-l = 'resize width +20'
+l = 'resize width -20'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
