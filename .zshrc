@@ -19,6 +19,8 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 # bun completions
 [ -s "~/.bun/_bun" ] && source "~/.bun/_bun"
 
+# starship
+export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
 
 # ALIASES
