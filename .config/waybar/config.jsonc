@@ -34,11 +34,11 @@
       "on-scroll-down": "playerctl previous"
   },
   "network": {
-      "format-wifi": "<span color='#00FFFF'> 󰤨 </span>{essid} ",
-      "format-ethernet": "<span color='#7FFF00'>   </span>Wired ",
-      "tooltip-format": "<span color='#FF1493'> 󰅧 </span>{bandwidthUpBytes}  <span color='#00BFFF'> 󰅢 </span>{bandwidthDownBytes}",
-    "format-linked": "<span color='#FFA500'> 󱘖 </span>{ifname} (No IP) ",
-    "format-disconnected": "<span color='#FF4040'>  </span>Disconnected ",
+      "format-wifi": "<span color='#00FFFF'> 󰤨 </span> {essid} ",
+      "format-ethernet": "<span color='#7FFF00'>  </span> Wired ",
+      "tooltip-format": "<span color='#FF1493'> 󰅧 </span> {bandwidthUpBytes} <span color='#00BFFF'> 󰅢 </span> {bandwidthDownBytes}",
+    "format-linked": "<span color='#FFA500'> 󱘖 </span> {ifname} (No IP) ",
+    "format-disconnected": "<span color='#FF4040'>  </span> Disconnected ",
     "format-alt": "<span color='#00FFFF'> 󰤨 </span>{signalStrength}% ",
     "interval": 2
   },
@@ -54,9 +54,7 @@
       ]
     },
     "on-click-right": "pavucontrol -t 3",
-    "on-click": "pactl -- set-sink-mute 0 toggle",
-    "tooltip": true,
-    "tooltip-format": "当前系统声音: {volume}%"
+    "on-click": "pactl -- set-sink-mute 0 toggle"
   },
   "hyprland/language": {
       "format": "{}",
@@ -64,9 +62,9 @@
       "format-ru": " 🇷🇺 RU "
   },
   "memory": {
-    "format": "<span color='#8A2BE2'>   </span>{used:0.1f}GB / {total:0.1f}GB ",
+    "format": "<span color='#8A2BE2'>   </span>{used:0.1f}GB ",
     "tooltip": true,
-    "tooltip-format": "当前内存占比: {used:0.2f}G/{total:0.2f}G",
+    "tooltip-format": " {used:0.2f}GB / {total:0.2f}GB ",
     "interval": 3
   },
   "cpu": {
