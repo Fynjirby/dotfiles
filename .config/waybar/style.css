@@ -12,7 +12,7 @@
 }
 
 #workspaces,
-#window,
+#custom-spotify,
 #tray,
 #clock {
   background-color: rgba(0, 0, 0, 0.50);
@@ -72,8 +72,4 @@
   padding: 2px 8px;
   margin: 0 2px;
   font-weight: bold;
-}
-
-#window {
-  font-weight: 900;
 }

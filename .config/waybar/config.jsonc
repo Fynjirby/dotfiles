@@ -4,9 +4,9 @@
   "height": 32,
   "spacing": 0,
   "modules-left": [
-    "hyprland/workspaces"
+    "hyprland/workspaces",
+    "custom/spotify"
   ],
-  "modules-center": ["hyprland/window"],
   "modules-right": [
     "network",
     "pulseaudio",
@@ -25,10 +25,18 @@
     "*":[1,2,3,4,5,6,7,8,9,10]
     }
   },
+  "custom/spotify": {
+      "exec": "/usr/bin/python3 $HOME/.config/waybar/scripts/mediaplayer.py --player spotify",
+      "format": " {}  ",
+      "return-type": "json",
+      "on-click": "playerctl play-pause",
+      "on-scroll-up": "playerctl next",
+      "on-scroll-down": "playerctl previous"
+  },
   "network": {
-    "format-wifi": "<span color='#00FFFF'> 󰤨 </span>{essid} ",
-    "format-ethernet": "<span color='#7FFF00'>   </span>Wired ",
-    "tooltip-format": "<span color='#FF1493'> 󰅧 </span>{bandwidthUpBytes}  <span color='#00BFFF'> 󰅢 </span>{bandwidthDownBytes}",
+      "format-wifi": "<span color='#00FFFF'> 󰤨 </span>{essid} ",
+      "format-ethernet": "<span color='#7FFF00'>   </span>Wired ",
+      "tooltip-format": "<span color='#FF1493'> 󰅧 </span>{bandwidthUpBytes}  <span color='#00BFFF'> 󰅢 </span>{bandwidthDownBytes}",
     "format-linked": "<span color='#FFA500'> 󱘖 </span>{ifname} (No IP) ",
     "format-disconnected": "<span color='#FF4040'>  </span>Disconnected ",
     "format-alt": "<span color='#00FFFF'> 󰤨 </span>{signalStrength}% ",
@@ -58,21 +66,23 @@
   "memory": {
     "format": "<span color='#8A2BE2'>   </span>{used:0.1f}GB / {total:0.1f}GB ",
     "tooltip": true,
-    "tooltip-format": "当前内存占比: {used:0.2f}G/{total:0.2f}G"
+    "tooltip-format": "当前内存占比: {used:0.2f}G/{total:0.2f}G",
+    "interval": 3
   },
   "cpu": {
     "format": "<span color='#FF9F0A'>   </span>{usage}% ",
-    "tooltip": true
+    "tooltip": true,
+    "interval": 3
+  },
+  "tray": {
+    "icon-size": 17,
+    "spacing": 8
   },
   "clock": {
     "interval": 1,
     "timezone": "Europe/Moscow",
-    "format": "{:%H:%M:%S} ",
+    "format": " {:%H:%M:%S} ",
     "tooltip": true,
     "tooltip-format": "{:L%Y 年 %m 月 %d 日, %A}"
-  },
-  "tray": {
-    "icon-size": 17,
-    "spacing": 6
   }
 }
