@@ -79,7 +79,7 @@
   "clock": {
     "interval": 1,
     "timezone": "Europe/Moscow",
-    "format": " {:%H:%M:%S} ",
+    "format": " {:%a %d %b %H:%M:%S} ",
     "tooltip": true,
     "tooltip-format": "<big>{:L%A, %d.%m.%Y}</big>\n\n<tt><small>{calendar}</small></tt>",
     "locale": "en_GB.ISO-8859-1"

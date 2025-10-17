@@ -1,0 +1,6 @@
+style: "auto"
+mouse: true
+pager: false
+width: 80
+all: false
+tui: true
