@@ -15,7 +15,7 @@
 #custom-spotify,
 #tray,
 #clock {
-  background-color: rgba(0, 0, 0, 0.50);
+  background-color: rgb(15, 15, 15);
   padding: 4px 6px;
   margin-top: 6px;
   margin-left: 6px;
@@ -24,42 +24,8 @@
   border-width: 0px;
 }
 
-#network {
-  margin-left: 6px;
-  padding: 4px 2px;
-  border-radius: 10px 0 0 10px;
-  border-width: 0px;
-}
-
-#cpu {
-  padding: 4px 2px;
-  border-radius: 0 10px 10px 0;
-  border-width: 0px;
-  margin-right: 6px;
-}
-
-#tray {
-    padding: 0 10px;
-}
-
-#pulseaudio,
-#memory,
-#cpu, 
-#language,
-#network {
-  background-color: rgba(0, 0, 0, 0.50);
-  margin-top: 6px;
-  padding: 4px 2px;
-  border-width: 0px;
-}
-
-#pulseaudio.muted {
-  color: #FF0000;
-  padding-top: 0;
-}
-
 #workspaces button.active {
-  background-color: #61afef; 
+  background-color: #005299;
   color: #ffffff;
   padding: 2px 8px;
   margin: 0 2px;
@@ -73,4 +39,34 @@
   padding: 2px 8px;
   margin: 0 2px;
   font-weight: bold;
+}
+
+#network {
+  margin-left: 6px;
+  border-radius: 10px 0 0 10px;
+}
+
+#network,
+#pulseaudio,
+#language,
+#memory,
+#cpu {
+  background-color: rgb(15, 15, 15);
+  margin-top: 6px;
+  padding: 4px 2px;
+  border-width: 0px;
+}
+
+#pulseaudio.muted {
+  color: #FF0000;
+  padding-top: 0;
+}
+
+#cpu {
+  border-radius: 0 10px 10px 0;
+  margin-right: 6px;
+}
+
+#tray {
+    padding: 0 10px;
 }
