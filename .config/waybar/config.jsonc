@@ -81,6 +81,7 @@
     "timezone": "Europe/Moscow",
     "format": " {:%H:%M:%S} ",
     "tooltip": true,
-    "tooltip-format": "{:L%Y 年 %m 月 %d 日, %A}"
+    "tooltip-format": "<big>{:L%A, %d.%m.%Y}</big>\n\n<tt><small>{calendar}</small></tt>",
+    "locale": "en_GB.ISO-8859-1"
   }
 }
