@@ -4,6 +4,7 @@
   "height": 32,
   "spacing": 0,
   "modules-left": [
+    "custom/archlogo",
     "hyprland/workspaces",
     "custom/spotify"
   ],
@@ -16,6 +17,13 @@
     "tray",
     "clock"
   ],
+  "custom/archlogo": {
+    "exec": "echo ''",
+    "interval": 0,
+    "format": "{}",
+    "tooltip-format": "Arch Linux BTW",
+    "on-click": "alacritty -e bash -c 'neofetch; $SHELL'"
+  },
   "hyprland/workspaces": {
     "disable-scroll": false,
     "all-outputs": true,
@@ -30,8 +38,9 @@
       "format": " {}  ",
       "return-type": "json",
       "on-click": "playerctl play-pause",
-      "on-scroll-up": "playerctl next",
-      "on-scroll-down": "playerctl previous"
+      "on-scroll-up": "playerctl previous",
+      "on-scroll-down": "playerctl next",
+      "on-click-middle": "pkill spotify && pkill waybar; waybar &"
   },
   "network": {
       "format-wifi": "<span color='#00FFFF'> 󰤨 </span> {essid} ",
@@ -59,17 +68,20 @@
   "hyprland/language": {
       "format": "{}",
       "format-en": " 🇺🇸 US ",
-      "format-ru": " 🇷🇺 RU "
+      "format-ru": " 🇷🇺 RU ",
+      "on-click": "hyprctl switchxkblayout hfd-usb-keyboard next"
   },
   "memory": {
     "format": "<span color='#8A2BE2'>   </span>{used:0.1f}GB ",
     "tooltip": true,
     "tooltip-format": " {used:0.2f}GB / {total:0.2f}GB ",
+    "on-click": "alacritty -e btop",
     "interval": 3
   },
   "cpu": {
     "format": "<span color='#FF9F0A'>   </span>{usage}% ",
     "tooltip": true,
+    "on-click": "alacritty -e btop",
     "interval": 3
   },
   "tray": {

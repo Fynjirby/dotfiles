@@ -11,6 +11,16 @@
   box-shadow: none;
 }
 
+#custom-archlogo {
+  background-color: rgb(15, 15, 15);
+  padding: 0 18px 0 12px;
+  margin-top: 6px;
+  margin-left: 6px;
+  margin-right: 6px;
+  border-radius: 10px;
+  font-size: 18px;
+}
+
 #workspaces,
 #custom-spotify,
 #tray,
