@@ -124,6 +124,10 @@ class PlayerManager:
         else:
             track_info = title
 
+        MAX_LENGTH = 30
+        if len(track_info) > MAX_LENGTH:
+           track_info = track_info[:MAX_LENGTH - 3] + "..."
+
         if track_info:
             if player.props.status == "Playing":
                 track_info = "  " + track_info
