@@ -35,6 +35,7 @@ alias python="python3"
 alias pip="pip3"
 alias ls="ls -a "
 alias cat="bat"
+alias neofetch="fastfetch"
 alias yank="wl-copy"
 alias lg="lazygit"
 alias fp='fzf --preview="bat {} --color=always"'

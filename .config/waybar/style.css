@@ -11,6 +11,15 @@
   box-shadow: none;
 }
 
+tooltip {
+    background: rgb(15, 15, 15);
+    border: 1.5px solid #005299;
+    border-radius: 8px;
+    color: #e0e0e0;
+    font-size: 12px;
+    padding: 8px 10px;
+}
+
 #custom-archlogo {
   background-color: rgb(15, 15, 15);
   padding: 0 18px 0 12px;

@@ -22,7 +22,7 @@
     "interval": 0,
     "format": "{}",
     "tooltip-format": "Arch Linux BTW",
-    "on-click": "alacritty -e bash -c 'neofetch; $SHELL'"
+    "on-click": "alacritty -e bash -c 'fastfetch; $SHELL'"
   },
   "hyprland/workspaces": {
     "disable-scroll": false,
@@ -45,7 +45,7 @@
   "network": {
       "format-wifi": "<span color='#00FFFF'> 󰤨 </span> {essid} ",
       "format-ethernet": "<span color='#7FFF00'>  </span> Wired ",
-      "tooltip-format": "<span color='#FF1493'> 󰅧 </span> {bandwidthUpBytes} <span color='#00BFFF'> 󰅢 </span> {bandwidthDownBytes} ",
+      "tooltip-format": "<span color='#00BFFF'> 󰅢 </span> {bandwidthDownBytes} <span color='#FF1493'> 󰅧 </span> {bandwidthUpBytes} ",
     "format-linked": "<span color='#FFA500'> 󱘖 </span> {ifname} (No IP) ",
     "format-disconnected": "<span color='#FF4040'>  </span> Disconnected ",
     "format-alt": "<span color='#00FFFF'> 󰤨 </span>{signalStrength}% ",
@@ -94,6 +94,7 @@
     "format": " {:%a %d %b %H:%M:%S} ",
     "tooltip": true,
     "tooltip-format": "<big>{:L%A, %d.%m.%Y}</big>\n\n<tt><small>{calendar}</small></tt>",
+    "on-click": "gnome-calendar",
     "locale": "en_GB.ISO-8859-1"
   }
 }
