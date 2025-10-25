@@ -36,7 +36,7 @@ alias pip="pip3"
 alias ls="ls -a "
 alias cat="bat"
 alias neofetch="fastfetch"
-alias yank="wl-copy"
+alias yank="xclip"
 alias lg="lazygit"
 alias fp='fzf --preview="bat {} --color=always"'
 alias fin="rg --files | sort | uniq | fzf"

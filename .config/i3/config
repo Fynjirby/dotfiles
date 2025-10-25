@@ -59,7 +59,7 @@ bindsym $mod+b exec firefox
 bindsym $mod+9 exec --no-startup-id i3lock -c 000000
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show drun -theme /usr/share/rofi/themes/dmenu.rasi
