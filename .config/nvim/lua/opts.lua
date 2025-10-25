@@ -17,19 +17,12 @@ vim.opt.undodir = vim.fn.stdpath("config") .. "/undo"
 vim.opt.undolevels = 1000
 vim.opt.clipboard = "unnamedplus" -- or "unnamedplus" for Linux
 
-vim.api.nvim_set_hl(0, "Normal",       { bg = "#0F0F0F" })
-vim.api.nvim_set_hl(0, "NonText",      { bg = "#0F0F0F" })
-vim.api.nvim_set_hl(0, "LineNr",       { bg = "#0F0F0F" })
-vim.api.nvim_set_hl(0, "SignColumn",   { bg = "#0F0F0F" })
-vim.api.nvim_set_hl(0, "VertSplit",    { fg = "#2A2A2A", bg = "#0F0F0F" })
-vim.api.nvim_set_hl(0, "StatusLine",   { fg = '#2A2A2A', bg = '#141414' })
-vim.api.nvim_set_hl(0, "StatusLineNC", { fg = '#2A2A2A', bg = '#141414' })
-vim.api.nvim_set_hl(0, "TabLine",      { fg = "#8F908A", bg = "#2B2B2B" })
-vim.api.nvim_set_hl(0, "TabLineSel",   { fg = "#DCDCCC", bg = "#4E8A4E" })
-vim.api.nvim_set_hl(0, "TabLineFill",  { bg = "none" })
-vim.api.nvim_set_hl(0, "CursorLine",   { bg = "#181818" })
-vim.api.nvim_set_hl(0, "Visual",       { bg = "#252525" })
+vim.api.nvim_set_hl(0, "TabLine",      { fg = "#8F908A", bg = "#2B2B2B" })  -- unactive
+vim.api.nvim_set_hl(0, "TabLineSel",   { fg = "#DCDCCC", bg = "#4e8a4e" })  -- active 
+vim.api.nvim_set_hl(0, "TabLineFill",  { bg = "#1C1C1C" })                  -- bg
+vim.api.nvim_set_hl(0, "TabLineSep",   { fg = "#3C3C3C", bg = "#1C1C1C" })  -- sepparators
 
+vim.api.nvim_set_hl(0, "VertSplit", { fg = "#767676", bg = "#767676" })
 
 require('lualine').setup {
     options = {
@@ -40,8 +33,8 @@ require('lualine').setup {
                 c = { fg = '#AAAAAA', bg = '#141414' },
             },
         },
-        component_separators = { left = '', right = '' },
-        section_separators = { left = '', right = '' },
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
     },
     sections = {
         lualine_a = {},

@@ -20,7 +20,7 @@ require("lazy").setup({
     checker = { enabled = true },
 })
 
-vim.cmd.colorscheme "habamax"
+vim.cmd.colorscheme "lunaperche"
 vim.opt.termguicolors = true
 
 require("opts")
