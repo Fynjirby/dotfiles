@@ -12,11 +12,11 @@ git clone https://github.com/fynjirby/dotfiles.git -b arch ~/dotfiles # (or `-b 
 > Note that you should clone a repo to a directory inside `$HOME`, for example to `~/egorsdots` or `~/.nicedots`, but not in `~/dots/egors`, stow syncs the directory with a parent one, be careful!
 
 ## Branches
-Checkout 3 branches - `mac`, `arch` and `arch-i3`
+Checkout 3 branches - `mac`, `arch` and `arch-i3wm`
 <br>
 - `mac` branch is for my MacBook
 - `arch` branch is for my PC running [Arch Linux](https://archlinux.org/) with [hyprland](https://hypr.land/)
-- `arch-i3` branch is for my PC running [Arch Linux](https://archlinux.org/) with [i3wm](https://i3wm.org/)
+- `arch-i3wm` branch is for my PC running [Arch Linux](https://archlinux.org/) with [i3wm](https://i3wm.org/)
 
   
 > [!NOTE]  
