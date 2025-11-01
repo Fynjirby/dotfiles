@@ -6,7 +6,6 @@ zenity --question \
   --text="<b>Bro do you really wanna suspend $(uname -n)?</b>" \
   --ok-label="Yes" \
   --cancel-label="No" \
-  --default-cancel \
   --no-wrap 
 if [ $? -eq 0 ]; then
     systemctl suspend
