@@ -25,5 +25,3 @@ vim.cmd.colorscheme("habamax")
 require("opts")
 require("lsp")
 require("keys").setup()
-
-require("lazygit")

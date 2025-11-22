@@ -41,3 +41,7 @@ alias docker="sudo docker"
 export PROMPT_EOL_MARK=""
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
 export PKG_CONFIG_PATH="$(brew --prefix gtk4)/lib/pkgconfig"
+
+# Disable brew auto update and env hints
+export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_NO_ENV_HINTS=1

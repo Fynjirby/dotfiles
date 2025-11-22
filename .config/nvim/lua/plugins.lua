@@ -1,25 +1,4 @@
 local plugins = {
-    {
-        "nvim-telescope/telescope.nvim",
-        branch = "0.1.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            {
-                "nvim-telescope/telescope-fzf-native.nvim",
-                build = "make",
-            },
-        },
-        opts = {
-            defaults = {
-                preview = {
-                    filesize_limit = 0.1,
-                },
-                extensions = {
-                    fzf = {},
-                },
-            },
-        },
-    },
     { "nvim-treesitter/nvim-treesitter", branch = "master", lazy = false, build = ":TSUpdate" },
     {
         "williamboman/mason.nvim",
@@ -81,8 +60,6 @@ local plugins = {
                 },
             })
 
-            vim.keymap.set({ "n", "v" }, "<leader>F", ":Format<CR>", { desc = "Format file" })
-
             vim.api.nvim_create_autocmd("BufWritePost", {
                 pattern = { "*.c", "*.h", "Makefile", "*.sh", "*.lua" },
                 command = "FormatWrite",
@@ -132,46 +109,6 @@ local plugins = {
         event = { "CmdlineEnter" },
         ft = { "go", "gomod" },
         build = ':lua require("go.install").update_all_sync()',
-    },
-    {
-        "NeogitOrg/neogit",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "sindrets/diffview.nvim",
-            "nvim-telescope/telescope.nvim",
-        },
-        cmd = "Neogit",
-        keys = {
-            {
-                "<leader>gg",
-                "<cmd>Neogit<cr>",
-                desc = "Open Neogit",
-            },
-        },
-        init = function()
-            vim.api.nvim_create_autocmd("User", {
-                pattern = "NeogitCommitComplete",
-                callback = function()
-                    vim.cmd.tabprevious()
-                end,
-            })
-        end,
-    },
-    {
-        "sindrets/diffview.nvim",
-        event = "VeryLazy",
-    },
-    {
-        "akinsho/git-conflict.nvim",
-        opts = {},
-        event = "VeryLazy",
-    },
-    {
-        "FabijanZulj/blame.nvim",
-        opts = {
-            date_format = "%b %d, %Y",
-        },
-        cmd = "BlameToggle",
     },
     {
         "lewis6991/gitsigns.nvim",

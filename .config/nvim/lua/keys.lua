@@ -20,21 +20,6 @@ function M.setup()
     vim.keymap.set("v", "H", "^")
     vim.keymap.set("v", "L", "$")
 
-    require("telescope").load_extension("fzf")
-
-    local builtin = require("telescope.builtin")
-
-    vim.keymap.set("n", "<leader>tf", builtin.find_files, { desc = "Telescope find files" })
-    vim.keymap.set("n", "<leader>tg", builtin.live_grep, { desc = "Telescope live grep" })
-
-    vim.keymap.set("n", "<leader>t", function()
-        vim.cmd.tabnew()
-        vim.cmd.terminal()
-        vim.cmd.startinsert()
-    end, { desc = "Open a builtin terminal in a new tabpage" })
-
-    vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
-
     vim.keymap.set("n", "<leader>a", function()
         vim.lsp.buf.code_action()
     end, { noremap = true, silent = true })
