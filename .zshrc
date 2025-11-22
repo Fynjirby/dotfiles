@@ -9,6 +9,7 @@ source $ZSH/oh-my-zsh.sh
 # EXPORTS
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export EDITOR=vim
 export TERMINAL=alacritty
 
@@ -39,3 +40,4 @@ alias docker="sudo docker"
 
 export PROMPT_EOL_MARK=""
 export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+export PKG_CONFIG_PATH="$(brew --prefix gtk4)/lib/pkgconfig"

@@ -1,11 +1,11 @@
 local plugins = {
     {
-        'nvim-telescope/telescope.nvim',
-        branch = '0.1.x',
+        "nvim-telescope/telescope.nvim",
+        branch = "0.1.x",
         dependencies = {
-            'nvim-lua/plenary.nvim',
+            "nvim-lua/plenary.nvim",
             {
-                'nvim-telescope/telescope-fzf-native.nvim',
+                "nvim-telescope/telescope-fzf-native.nvim",
                 build = "make",
             },
         },
@@ -20,13 +20,75 @@ local plugins = {
             },
         },
     },
-    { "nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate" },
-    { "williamboman/mason.nvim",
+    { "nvim-treesitter/nvim-treesitter", branch = "master", lazy = false, build = ":TSUpdate" },
+    {
+        "williamboman/mason.nvim",
         opts = {
-            ensure_installed = { "gopls" }
+            ensure_installed = { "gopls", "clangd", "lua-language-server" },
         },
     },
     { "neovim/nvim-lspconfig" },
+    {
+        "mhartington/formatter.nvim",
+        ft = { "c", "h", "make", "lua" },
+        config = function()
+            local formatter = require("formatter")
+
+            formatter.setup({
+                filetype = {
+                    c = {
+                        function()
+                            return {
+                                exe = "clang-format",
+                                args = { "--style=file", "--fallback-style=LLVM" },
+                                stdin = true,
+                            }
+                        end,
+                    },
+                    h = {
+                        function()
+                            return {
+                                exe = "clang-format",
+                                args = { "--style=file", "--fallback-style=LLVM" },
+                                stdin = true,
+                            }
+                        end,
+                    },
+                    make = {
+                        function()
+                            return {
+                                exe = "mbake",
+                                args = { "format", "--stdin" },
+                                stdin = true,
+                            }
+                        end,
+                    },
+                    lua = {
+                        function()
+                            return {
+                                exe = "stylua",
+                                args = {
+                                    "--indent-type",
+                                    "Spaces",
+                                    "--indent-width",
+                                    4,
+                                    "-",
+                                },
+                                stdin = true,
+                            }
+                        end,
+                    },
+                },
+            })
+
+            vim.keymap.set({ "n", "v" }, "<leader>F", ":Format<CR>", { desc = "Format file" })
+
+            vim.api.nvim_create_autocmd("BufWritePost", {
+                pattern = { "*.c", "*.h", "Makefile", "*.sh", "*.lua" },
+                command = "FormatWrite",
+            })
+        end,
+    },
     {
         "nanozuki/tabby.nvim",
         opts = {
@@ -62,14 +124,14 @@ local plugins = {
             vim.api.nvim_create_autocmd("BufWritePre", {
                 pattern = "*.go",
                 callback = function()
-                    require('go.format').goimports()
+                    require("go.format").goimports()
                 end,
                 group = format_sync_grp,
             })
         end,
-        event = {"CmdlineEnter"},
-        ft = {"go", 'gomod'},
-        build = ':lua require("go.install").update_all_sync()'
+        event = { "CmdlineEnter" },
+        ft = { "go", "gomod" },
+        build = ':lua require("go.install").update_all_sync()',
     },
     {
         "NeogitOrg/neogit",
@@ -86,10 +148,12 @@ local plugins = {
                 desc = "Open Neogit",
             },
         },
-        init = function ()
+        init = function()
             vim.api.nvim_create_autocmd("User", {
                 pattern = "NeogitCommitComplete",
-                callback = function() vim.cmd.tabprevious() end
+                callback = function()
+                    vim.cmd.tabprevious()
+                end,
             })
         end,
     },
@@ -98,7 +162,7 @@ local plugins = {
         event = "VeryLazy",
     },
     {
-        'akinsho/git-conflict.nvim',
+        "akinsho/git-conflict.nvim",
         opts = {},
         event = "VeryLazy",
     },
@@ -110,14 +174,14 @@ local plugins = {
         cmd = "BlameToggle",
     },
     {
-        'lewis6991/gitsigns.nvim',
+        "lewis6991/gitsigns.nvim",
         opts = {
             signs = {
-                add          = {hl = 'GitGutterAdd'   , text = '+'},
-                change       = {hl = 'GitGutterChange', text = '~'},
-                delete       = {hl = 'GitGutterDelete', text = '_'},
-                topdelete    = {hl = 'GitGutterDelete', text = '‾'},
-                changedelete = {hl = 'GitGutterChange', text = '~'},
+                add = { hl = "GitGutterAdd", text = "+" },
+                change = { hl = "GitGutterChange", text = "~" },
+                delete = { hl = "GitGutterDelete", text = "_" },
+                topdelete = { hl = "GitGutterDelete", text = "‾" },
+                changedelete = { hl = "GitGutterChange", text = "~" },
             },
             signcolumn = true,
             numhl = false,
@@ -125,14 +189,14 @@ local plugins = {
             word_diff = false,
             watch_gitdir = {
                 interval = 1000,
-                follow_files = true
+                follow_files = true,
             },
-        }
+        },
     },
     {
         "nvim-lualine/lualine.nvim",
         dependencies = {
-            'nvim-tree/nvim-web-devicons',
+            "nvim-tree/nvim-web-devicons",
         },
     },
     {
@@ -217,9 +281,7 @@ local plugins = {
             })
         end,
     },
-    {  "windwp/nvim-autopairs",
-        dependencies = { "nvim-cmp" },
-    },
+    { "windwp/nvim-autopairs", dependencies = { "nvim-cmp" } },
     -- add more plugins here
 }
 return plugins
