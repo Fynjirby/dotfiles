@@ -34,6 +34,10 @@ function M.setup()
     end, { desc = "Open a builtin terminal in a new tabpage" })
 
     vim.api.nvim_set_keymap("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
+
+    vim.keymap.set("n", "<leader>a", function()
+        vim.lsp.buf.code_action()
+    end, { noremap = true, silent = true })
 end
 
 return M
