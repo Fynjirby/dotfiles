@@ -1,0 +1,73 @@
+* {
+  font-family: "FiraCode Nerd Font";
+  font-weight: bold;
+  font-size: 16px;
+  color: #dcdfe1;
+}
+
+#waybar {
+  background-color: rgba(12, 12, 12, 0.85);
+}
+
+tooltip {
+    background: rgba(12, 12, 12, 0.85);
+    border-radius: 8px;
+    color: #e0e0e0;
+    font-size: 12px;
+}
+
+#custom-archlogo {
+  padding: 0 18px 0 12px;
+  margin: 0 8px;
+  font-size: 18px;
+}
+
+#workspaces button {
+  padding: 2px 8px;
+  margin: 4px;
+}
+
+#workspaces button.focused {
+  box-shadow: inset 0 -3px #dcdfe1;
+  border-radius: 4px;
+}
+
+#workspaces button.urgent {
+    background-color: #eb4d4b;
+}
+
+#mode, #window, #scratchpad,
+#pulseaudio,
+#language,
+#memory,
+#cpu {
+  padding: 4px 8px;
+  background-color: #2e2e2e;
+  border-radius: 8px;
+  margin: 4px;
+}
+
+#pulseaudio, #language, #custom-vpn, #network, #memory, #cpu {
+  padding: 4px 2px;
+}
+
+#pulseaudio.muted {
+  color: #FF0000;
+}
+
+#language {
+    min-width: 40px;
+}
+
+#custom-vpn {
+    padding-right: 12px;
+}
+
+#tray {
+    margin: 0 8px;
+}
+
+#clock {
+    margin-left: 8px;
+    padding-right: 18px;
+}

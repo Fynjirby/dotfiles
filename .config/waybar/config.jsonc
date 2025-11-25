@@ -1,0 +1,104 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 32,
+    "modules-left": [
+        "custom/archlogo",
+        "sway/workspaces",
+        "sway/window",
+        "sway/mode"
+    ],
+    "modules-center": [
+        "sway/scratchpad",
+        "custom/spotify"
+    ],
+    "modules-right": [
+        "tray",
+        "pulseaudio",
+        "sway/language",
+        "network",
+        "custom/vpn",
+        "memory",
+        "cpu",
+        "clock"
+    ],
+    "custom/archlogo": {
+        "exec": "echo ''",
+        "interval": 0,
+        "format": "{}",
+        "tooltip-format": "Arch Linux BTW",
+        "on-click": "alacritty -e bash -c 'fastfetch; $SHELL'"
+    },
+    "sway/scratchpad": {
+        "format": "{count}",
+        "show-empty": false,
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+    "custom/spotify": {
+        "exec": "/usr/bin/python3 $HOME/.config/waybar/scripts/mediaplayer.py --player spotify",
+        "format": " {}  ",
+        "max-length": 50,
+        "return-type": "json",
+        "on-click": "playerctl --player=spotify play-pause",
+        "on-scroll-up": "playerctl previous",
+        "on-scroll-down": "playerctl next",
+        "on-click-middle": "pkill spotify && pkill waybar; waybar &"
+    },
+    "tray": {
+        "icon-size": 17,
+        "spacing": 10
+    },
+    "pulseaudio": {
+        "format": "{icon}{volume}% ",
+        "format-muted": "<span color='#FF4040'> 󰖁 </span>Muted ",
+        "format-icons": {
+            "headset": "   ",
+            "default": [
+                "<span color='#808080'>  </span>",
+                "<span color='#FFFF66'>  </span>",
+                "<span color='#00FF7F'>  </span>"
+            ]
+        },
+        "on-click-right": "pactl -- set-sink-mute 0 toggle",
+        "on-click": "pavucontrol -t 3"
+    },
+    "memory": {
+        "format": "   {used:0.1f}GB ",
+        "tooltip": true,
+        "tooltip-format": " {used:0.2f}GB / {total:0.2f}GB ",
+        "on-click": "alacritty -e btop",
+        "interval": 3
+    },
+    "network": {
+        "format-wifi": "<span color='#00FFFF'> 󰤨 </span> {essid} ",
+        "format-ethernet": "<span color='#7FFF00'>  </span> Wired ",
+        "tooltip-format": "<span color='#00BFFF'> 󰅢 </span> {bandwidthDownBytes} <span color='#FF1493'> 󰅧 </span> {bandwidthUpBytes} ",
+        "format-linked": "<span color='#FFA500'> 󱘖 </span> {ifname} (No IP) ",
+        "format-disconnected": "<span color='#FF4040'>  </span> Disconnected ",
+        "format-alt": "<span color='#00FFFF'> 󰤨 </span> {signalStrength}% ",
+        "interval": 2
+    },
+    "custom/vpn": { 
+        "exec": "$HOME/.config/waybar/scripts/vpn_status.sh", 
+        "interval": 5, 
+        "return-type": "json",
+        "on-click": "sudo vpn toggle", 
+        "tooltip": false 
+    },
+    "cpu": {
+        "format": "   {usage}% ",
+        "tooltip": true,
+        "on-click": "alacritty -e btop",
+        "interval": 3
+    },
+    "clock": {
+        "interval": 1,
+        "timezone": "Europe/Moscow",
+        "format": "{:%a %d %b %H:%M:%S}",
+        "tooltip": true,
+        "tooltip-format": "<big>{:L%A, %d.%m.%Y}</big>\n\n<tt><small>{calendar}</small></tt>",
+        "on-click": "gnome-calendar",
+        "locale": "en_GB.ISO-8859-1"
+    }
+}
