@@ -1,0 +1,14 @@
+[font]
+size = 16
+normal = {family = "FiraCode Nerd Font Mono"}
+# to see icons install ttf-joypixels or ttf-apple-emoji for example
+
+[colors.primary]
+background = "#000000"
+
+[window.padding]
+x = 5
+y = 5
+
+[mouse]
+hide_when_typing = true
