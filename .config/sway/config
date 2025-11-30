@@ -71,6 +71,9 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+bindsym $mod+Tab focus next
+bindsym $mod+Shift+Tab focus prev
+
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
@@ -138,3 +141,4 @@ bar {
 # Window rules
 for_window [title="wayland-boomer"] floating enable, fullscreen enable, sticky enable
 for_window [title="Extension: (Bitwarden Password Manager) - Bitwarden — Mozilla Firefox"] floating enable
+for_window [title="BlankNote"] floating enable
