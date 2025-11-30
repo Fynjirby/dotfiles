@@ -43,7 +43,7 @@ bindsym --whole-window $mod+button7 workspace next
 # Autostart some apps
 # Hyprlock as greeter is done with greetd
 exec hyprlock
-exec --no-startup-id swaybg -i ~/Pictures/Wallpaper/mountains.jpg
+exec --no-startup-id swaybg -i ~/Pictures/Wallpaper/terrain.jpg
 exec mako
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 exec swayidle \
