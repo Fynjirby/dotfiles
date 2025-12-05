@@ -28,14 +28,16 @@ tooltip {
     transition: 0.2s all;
 }
 
-#workspaces button.focused {
+#workspaces button.active {
     box-shadow: inset 0 -3px #dcdfe1;
     border-radius: 4px;
 }
 
+/*
 #workspaces button.urgent {
     background-color: #eb4d4b;
 }
+*/
 
 #mode, #window, #scratchpad,
 #pulseaudio,

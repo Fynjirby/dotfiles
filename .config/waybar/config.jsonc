@@ -4,18 +4,18 @@
     "height": 32,
     "modules-left": [
         "custom/archlogo",
-        "sway/workspaces",
-        "sway/window",
-        "sway/mode"
+        "hyprland/workspaces",
+        "hyprland/window"
+        // "sway/mode"
     ],
     "modules-center": [
-        "sway/scratchpad",
+        // "sway/scratchpad",
         "custom/spotify"
     ],
     "modules-right": [
         "tray",
         "pulseaudio",
-        "sway/language",
+        "hyprland/language",
         "network",
         "custom/vpn",
         "memory",
@@ -29,12 +29,18 @@
         "tooltip-format": "Arch Linux BTW",
         "on-click": "alacritty -e bash -c 'fastfetch; $SHELL'"
     },
+    "hyprland/workspaces": {
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1"
+    },
+    /*
     "sway/scratchpad": {
         "format": "{count}",
         "show-empty": false,
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
+    */
     "custom/spotify": {
         "exec": "/usr/bin/python3 $HOME/.config/waybar/scripts/mediaplayer.py --player spotify",
         "format": " {}  ",
@@ -63,12 +69,9 @@
         "on-click-right": "pactl -- set-sink-mute 0 toggle",
         "on-click": "pavucontrol -t 3"
     },
-    "memory": {
-        "format": "   {used:0.1f}GB ",
-        "tooltip": true,
-        "tooltip-format": " {used:0.2f}GB / {total:0.2f}GB ",
-        "on-click": "alacritty -e btop",
-        "interval": 3
+    "hyprland/language": {
+        "format-en": " us ",
+        "format-ru": " ru "
     },
     "network": {
         "format-wifi": "<span color='#00FFFF'> 󰤨 </span> {essid} ",
@@ -85,6 +88,13 @@
         "return-type": "json",
         "on-click": "sudo vpn toggle", 
         "tooltip": false 
+    },
+    "memory": {
+        "format": "   {used:0.1f}GB ",
+        "tooltip": true,
+        "tooltip-format": " {used:0.2f}GB / {total:0.2f}GB ",
+        "on-click": "alacritty -e btop",
+        "interval": 3
     },
     "cpu": {
         "format": "   {usage}% ",
