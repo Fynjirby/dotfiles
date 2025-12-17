@@ -6,11 +6,11 @@
         "custom/archlogo",
         "hyprland/workspaces",
         "hyprland/window"
-        // "sway/mode"
     ],
     "modules-center": [
-        // "sway/scratchpad",
-        "custom/spotify"
+        "mpris#browser",
+        "mpris#strwb",
+        "mpris#spotify" 
     ],
     "modules-right": [
         "tray",
@@ -33,23 +33,45 @@
         "on-scroll-up": "hyprctl dispatch workspace e-1",
         "on-scroll-down": "hyprctl dispatch workspace e+1"
     },
-    /*
-    "sway/scratchpad": {
-        "format": "{count}",
-        "show-empty": false,
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
+    "mpris#browser": {
+        "player": "firefox",
+        "format": " 🦊 {status_icon} {title} ",
+        "status-icons": {
+            "playing": "",
+            "paused": "",
+            "stopped": ""
+        },
+        "max-length": 20,
+        "on-click": "playerctl --player=firefox play-pause",
+        "on-click-right": "playerctl --player=firefox stop"
     },
-    */
-    "custom/spotify": {
-        "exec": "/usr/bin/python3 $HOME/.config/waybar/scripts/mediaplayer.py --player spotify",
-        "format": " {}  ",
+    "mpris#strwb": {
+        "player": "strawberry",
+        "format": " 🍓 {status_icon} {artist} — {title} ",
+        "status-icons": {
+            "playing": "",
+            "paused": "",
+            "stopped": ""
+        },
         "max-length": 50,
-        "return-type": "json",
+        "on-click": "playerctl --player=strawberry play-pause",
+        "on-click-right": "playerctl --player=strawberry stop",
+        "on-scroll-up": "playerctl --player=strawberry previous",
+        "on-scroll-down": "playerctl --player=strawberry next"
+    },
+    "mpris#spotify": {
+        "player": "spotify",
+        "format": "  {artist} — {title} {status_icon} ",
+        "status-icons": {
+            "playing": "",
+            "paused": "",
+            "stopped": ""
+        },
+        "max-length": 50,
         "on-click": "playerctl --player=spotify play-pause",
-        "on-scroll-up": "playerctl previous",
-        "on-scroll-down": "playerctl next",
-        "on-click-middle": "pkill spotify && pkill waybar; waybar &"
+        "on-click-right": "playerctl --player=spotify stop",
+        "on-scroll-up": "playerctl --player=spotify previous",
+        "on-scroll-down": "playerctl --player=spotify next"
     },
     "tray": {
         "icon-size": 17,
