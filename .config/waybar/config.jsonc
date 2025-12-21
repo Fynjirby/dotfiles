@@ -35,7 +35,7 @@
     },
     "mpris#browser": {
         "player": "firefox",
-        "format": " 🦊 {status_icon} {title} ",
+        "format": " 🏴‍☠️ {status_icon} {title} ",
         "status-icons": {
             "playing": "",
             "paused": "",
