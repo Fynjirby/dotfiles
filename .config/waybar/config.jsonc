@@ -61,7 +61,7 @@
     },
     "mpris#spotify": {
         "player": "spotify",
-        "format": "  {artist} — {title} {status_icon} ",
+        "format": "   {status_icon} {artist} — {title} ",
         "status-icons": {
             "playing": "",
             "paused": "",
