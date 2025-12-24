@@ -23,6 +23,13 @@ function M.setup()
     vim.keymap.set("n", "<leader>a", function()
         vim.lsp.buf.code_action()
     end, { noremap = true, silent = true })
+
+    vim.api.nvim_set_keymap(
+        "i",
+        "<Tab>",
+        'pumvisible() ? "<C-n>" : "<Tab>"',
+        { expr = true, noremap = true, silent = true }
+    )
 end
 
 return M
