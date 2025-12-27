@@ -1,0 +1,7 @@
+#!/bin/bash
+echo "CompileFlags:" > .clangd
+echo "  Add:" >> .clangd
+
+make | grep -oP '(-I\S+)' | sort -u | while read flag; do
+    echo "    - \"$flag\"" >> .clangd
+done
