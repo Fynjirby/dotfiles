@@ -1,0 +1,74 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "gutter": {
+    "min_line_number_digits": 0
+  },
+  "base_keymap": "VSCode",
+  "edit_predictions": {
+    "enabled_in_text_threads": false,
+  },
+  "show_edit_predictions": false,
+  "window_decorations": "client",
+  "use_system_window_tabs": false,
+  "tabs": {
+    "file_icons": true,
+    "git_status": true,
+  },
+  "tab_bar": {
+    "show": true,
+  },
+  "title_bar": {
+    "show_user_picture": false,
+    "show_sign_in": false,
+    "show_onboarding_banner": false,
+    "show_menus": false,
+    "show_branch_icon": true,
+  },
+  "diagnostics": {
+    "inline": {
+      "enabled": true,
+    },
+  },
+  "prettier": {
+    "allowed": true,
+  },
+  "scrollbar": {
+    "show": "auto",
+  },
+  "autosave": "on_focus_change",
+  "cursor_blink": false,
+  "cursor_shape": "bar",
+  "ui_font_family": ".ZedSans",
+  "buffer_font_family": ".ZedMono",
+  "auto_update": false,
+  "use_system_prompts": false,
+  "use_system_path_prompts": false,
+  "disable_ai": true,
+  "debugger": {
+    "dock": "right",
+  },
+  "agent": {
+    "expand_terminal_card": false,
+    "expand_edit_card": false,
+    "single_file_review": false,
+    "enable_feedback": false,
+    "dock": "right",
+    "model_parameters": [],
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false,
+  },
+  "vim_mode": true,
+  "icon_theme": "Zed (Default)",
+  "ui_font_size": 16,
+  "buffer_font_size": 15,
+  "theme": "Min Dark (Solid)",
+}

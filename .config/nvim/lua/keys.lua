@@ -22,6 +22,8 @@ function M.setup()
 
     vim.keymap.set("n", "<leader>a", function()
         vim.lsp.buf.code_action()
+        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     end, { noremap = true, silent = true })
 
     vim.api.nvim_set_keymap(

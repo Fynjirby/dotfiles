@@ -1,18 +1,10 @@
 require("nvim-treesitter.configs").setup({
-    ensure_installed = { "lua", "vim", "vimdoc", "markdown", "go" },
+    ensure_installed = { "lua", "vim", "vimdoc", "markdown", "go", "rust", "bash" },
     highlight = { enable = true },
     indent = { enable = true },
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-local on_attach = function(client, bufnr)
-    local opts = { noremap = true, silent = true, buffer = bufnr }
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
-end
 
 vim.lsp.config.gopls = {
     cmd = { "gopls" },
@@ -53,8 +45,16 @@ vim.lsp.config.lua_ls = {
     on_attach = on_attach,
 }
 
+vim.lsp.config.rust_analyzer = {
+    cmd = { "rust-analyzer" },
+    filetypes = { "rust" },
+    root_markers = { "Cargo.toml", ".git" },
+    capabilities = capabilities,
+    on_attach = on_attach,
+}
+
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.c", "*.h", "*.cpp", "*.hpp", ".go", ".lua" },
+    pattern = { "*.c", "*.h", "*.cpp", "*.hpp", ".go", ".lua", ".sh", ".rs" },
     callback = function()
         vim.lsp.buf.format({ async = false })
     end,
@@ -63,3 +63,4 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.lsp.enable("gopls")
 vim.lsp.enable("clangd")
 vim.lsp.enable("lua_ls")
+vim.lsp.enable("rust_analyzer")
