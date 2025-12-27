@@ -1,7 +1,7 @@
 * {
     font-family: "FiraCode Nerd Font";
     font-weight: bold;
-    font-size: 16px;
+    font-size: 14px;
     color: #dcdfe1;
 }
 
@@ -17,14 +17,14 @@ tooltip {
 }
 
 #custom-archlogo {
-    padding: 0 18px 0 12px;
-    margin: 0 8px;
-    font-size: 18px;
+    padding: 0 12px 0 8px;
+    margin: 0 6px;
+    font-size: 16px;
 }
 
 #workspaces button {
-    padding: 2px 8px;
-    margin: 4px;
+    padding: 1px 8px;
+    margin: 2px;
     transition: 0.2s all;
 }
 
@@ -39,23 +39,30 @@ tooltip {
 }
 */
 
-#mode, #window, #scratchpad,
+#mode,
+#window,
+#scratchpad,
 #pulseaudio,
 #language,
 #memory,
 #cpu {
-    padding: 4px 8px;
+    padding: 2px 6px;
     background-color: #2e2e2e;
     border-radius: 8px;
-    margin: 4px;
+    margin: 3px;
 }
 
-#pulseaudio, #language, #custom-vpn, #network, #memory, #cpu {
-    padding: 4px 2px;
+#pulseaudio,
+#language,
+#custom-vpn,
+#network,
+#memory,
+#cpu {
+    padding: 2px 1px;
 }
 
 #pulseaudio.muted {
-    color: #FF0000;
+    color: #ff0000;
 }
 
 #language {
@@ -72,5 +79,5 @@ tooltip {
 
 #clock {
     margin-left: 8px;
-    padding-right: 18px;
+    margin-right: 12px;
 }

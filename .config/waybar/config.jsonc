@@ -1,136 +1,128 @@
 {
-    "layer": "top",
-    "position": "bottom",
-    "height": 32,
-    "modules-left": [
-        "custom/archlogo",
-        "hyprland/workspaces",
-        "hyprland/window"
-    ],
-    "modules-center": [
-        "mpris#browser",
-        "mpris#strwb",
-        "mpris#spotify" 
-    ],
-    "modules-right": [
-        "tray",
-        "pulseaudio",
-        "hyprland/language",
-        "network",
-        "custom/vpn",
-        "memory",
-        "cpu",
-        "clock"
-    ],
-    "custom/archlogo": {
-        "exec": "echo ''",
-        "interval": 0,
-        "format": "{}",
-        "tooltip-format": "Arch Linux BTW",
-        "on-click": "alacritty -e bash -c 'fastfetch; $SHELL'"
+  "layer": "top",
+  "position": "bottom",
+  "height": 24,
+  "modules-left": ["custom/archlogo", "hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["mpris#browser", "mpris#strwb", "mpris#spotify"],
+  "modules-right": [
+    "tray",
+    "pulseaudio",
+    "hyprland/language",
+    "network",
+    "custom/vpn",
+    "memory",
+    "cpu",
+    "clock",
+  ],
+  "custom/archlogo": {
+    "exec": "echo ''",
+    "interval": 0,
+    "format": "{}",
+    "tooltip-format": "Arch Linux BTW",
+    "on-click": "alacritty -e bash -c 'fastfetch; $SHELL'",
+  },
+  "hyprland/workspaces": {
+    "on-scroll-up": "hyprctl dispatch workspace e-1",
+    "on-scroll-down": "hyprctl dispatch workspace e+1",
+  },
+  "mpris#browser": {
+    "player": "firefox",
+    "format": " 🏴‍☠️ {status_icon} {title} ",
+    "status-icons": {
+      "playing": "",
+      "paused": "",
+      "stopped": "",
     },
-    "hyprland/workspaces": {
-        "on-scroll-up": "hyprctl dispatch workspace e-1",
-        "on-scroll-down": "hyprctl dispatch workspace e+1"
+    "max-length": 40,
+    "on-click": "playerctl --player=firefox play-pause",
+    "on-click-right": "playerctl --player=firefox stop",
+  },
+  "mpris#strwb": {
+    "player": "strawberry",
+    "format": " 🍓 {status_icon} {artist} — {title} ",
+    "status-icons": {
+      "playing": "",
+      "paused": "",
+      "stopped": "",
     },
-    "mpris#browser": {
-        "player": "firefox",
-        "format": " 🏴‍☠️ {status_icon} {title} ",
-        "status-icons": {
-            "playing": "",
-            "paused": "",
-            "stopped": ""
-        },
-        "max-length": 20,
-        "on-click": "playerctl --player=firefox play-pause",
-        "on-click-right": "playerctl --player=firefox stop"
+    "max-length": 50,
+    "on-click": "playerctl --player=strawberry play-pause",
+    "on-click-right": "playerctl --player=strawberry stop",
+    "on-scroll-up": "playerctl --player=strawberry previous",
+    "on-scroll-down": "playerctl --player=strawberry next",
+  },
+  "mpris#spotify": {
+    "player": "spotify",
+    "format": "   {status_icon} {artist} — {title} ",
+    "status-icons": {
+      "playing": "",
+      "paused": "",
+      "stopped": "",
     },
-    "mpris#strwb": {
-        "player": "strawberry",
-        "format": " 🍓 {status_icon} {artist} — {title} ",
-        "status-icons": {
-            "playing": "",
-            "paused": "",
-            "stopped": ""
-        },
-        "max-length": 50,
-        "on-click": "playerctl --player=strawberry play-pause",
-        "on-click-right": "playerctl --player=strawberry stop",
-        "on-scroll-up": "playerctl --player=strawberry previous",
-        "on-scroll-down": "playerctl --player=strawberry next"
+    "max-length": 50,
+    "on-click": "playerctl --player=spotify play-pause",
+    "on-click-right": "playerctl --player=spotify stop",
+    "on-scroll-up": "playerctl --player=spotify previous",
+    "on-scroll-down": "playerctl --player=spotify next",
+  },
+  "tray": {
+    "icon-size": 17,
+    "spacing": 10,
+  },
+  "pulseaudio": {
+    "format": "{icon}{volume}% ",
+    "format-muted": "<span color='#FF4040'> 󰖁 </span>Muted ",
+    "format-icons": {
+      "headset": "   ",
+      "default": [
+        "<span color='#808080'>  </span>",
+        "<span color='#FFFF66'>  </span>",
+        "<span color='#00FF7F'>  </span>",
+      ],
     },
-    "mpris#spotify": {
-        "player": "spotify",
-        "format": "   {status_icon} {artist} — {title} ",
-        "status-icons": {
-            "playing": "",
-            "paused": "",
-            "stopped": ""
-        },
-        "max-length": 50,
-        "on-click": "playerctl --player=spotify play-pause",
-        "on-click-right": "playerctl --player=spotify stop",
-        "on-scroll-up": "playerctl --player=spotify previous",
-        "on-scroll-down": "playerctl --player=spotify next"
-    },
-    "tray": {
-        "icon-size": 17,
-        "spacing": 10
-    },
-    "pulseaudio": {
-        "format": "{icon}{volume}% ",
-        "format-muted": "<span color='#FF4040'> 󰖁 </span>Muted ",
-        "format-icons": {
-            "headset": "   ",
-            "default": [
-                "<span color='#808080'>  </span>",
-                "<span color='#FFFF66'>  </span>",
-                "<span color='#00FF7F'>  </span>"
-            ]
-        },
-        "on-click-right": "pactl -- set-sink-mute 0 toggle",
-        "on-click": "pavucontrol -t 3"
-    },
-    "hyprland/language": {
-        "format-en": " us ",
-        "format-ru": " ru "
-    },
-    "network": {
-        "format-wifi": "<span color='#00FFFF'> 󰤨 </span> {essid} ",
-        "format-ethernet": "<span color='#7FFF00'>  </span> Wired ",
-        "tooltip-format": "<span color='#00BFFF'> 󰅢 </span> {bandwidthDownBytes} <span color='#FF1493'> 󰅧 </span> {bandwidthUpBytes} ",
-        "format-linked": "<span color='#FFA500'> 󱘖 </span> {ifname} (No IP) ",
-        "format-disconnected": "<span color='#FF4040'>  </span> Disconnected ",
-        "format-alt": "<span color='#00FFFF'> 󰤨 </span> {signalStrength}% ",
-        "interval": 2
-    },
-    "custom/vpn": { 
-        "exec": "$HOME/.config/waybar/scripts/vpn_status.sh", 
-        "interval": 5, 
-        "return-type": "json",
-        "on-click": "sudo vpn toggle", 
-        "tooltip": false 
-    },
-    "memory": {
-        "format": "   {used:0.1f}GB ",
-        "tooltip": true,
-        "tooltip-format": " {used:0.2f}GB / {total:0.2f}GB ",
-        "on-click": "alacritty -e btop",
-        "interval": 3
-    },
-    "cpu": {
-        "format": "   {usage}% ",
-        "tooltip": true,
-        "on-click": "alacritty -e btop",
-        "interval": 3
-    },
-    "clock": {
-        "interval": 1,
-        "timezone": "Europe/Moscow",
-        "format": "{:%a %d %b %H:%M:%S}",
-        "tooltip": true,
-        "tooltip-format": "<big>{:L%A, %d.%m.%Y}</big>\n\n<tt><small>{calendar}</small></tt>",
-        "on-click": "gnome-calendar",
-        "locale": "en_GB.ISO-8859-1"
-    }
+    "on-click-right": "pactl -- set-sink-mute 0 toggle",
+    "on-click": "pavucontrol -t 3",
+  },
+  "hyprland/language": {
+    "format-en": " us ",
+    "format-ru": " ru ",
+  },
+  "network": {
+    "format-wifi": "<span color='#00FFFF'> 󰤨 </span> {essid} ",
+    "format-ethernet": "<span color='#7FFF00'>  </span> Wired ",
+    "tooltip-format": "<span color='#00BFFF'> 󰅢 </span> {bandwidthDownBytes} <span color='#FF1493'> 󰅧 </span> {bandwidthUpBytes} ",
+    "format-linked": "<span color='#FFA500'> 󱘖 </span> {ifname} (No IP) ",
+    "format-disconnected": "<span color='#FF4040'>  </span> Disconnected ",
+    "format-alt": "<span color='#00FFFF'> 󰤨 </span> {signalStrength}% ",
+    "interval": 2,
+  },
+  "custom/vpn": {
+    "exec": "$HOME/.config/waybar/scripts/vpn_status.sh",
+    "interval": 5,
+    "return-type": "json",
+    "on-click": "sudo vpn toggle",
+    "tooltip": false,
+  },
+  "memory": {
+    "format": "   {used:0.1f}GB ",
+    "tooltip": true,
+    "tooltip-format": " {used:0.2f}GB / {total:0.2f}GB ",
+    "on-click": "alacritty -e btop",
+    "interval": 3,
+  },
+  "cpu": {
+    "format": "   {usage}% ",
+    "tooltip": true,
+    "on-click": "alacritty -e btop",
+    "interval": 3,
+  },
+  "clock": {
+    "interval": 1,
+    "timezone": "Europe/Moscow",
+    "format": "{:%a %d %b %H:%M:%S}",
+    "tooltip": true,
+    "tooltip-format": "<big>{:L%A, %d.%m.%Y}</big>\n\n<tt><small>{calendar}</small></tt>",
+    "on-click": "gnome-calendar",
+    "locale": "en_GB.ISO-8859-1",
+  },
 }
