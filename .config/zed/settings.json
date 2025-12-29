@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "collaboration_panel": {
+    "button": false
+  },
   "gutter": {
     "min_line_number_digits": 0
   },
@@ -37,7 +40,7 @@
     },
   },
   "prettier": {
-    "allowed": true,
+    "allowed": false,
   },
   "scrollbar": {
     "show": "auto",
@@ -70,5 +73,5 @@
   "icon_theme": "Zed (Default)",
   "ui_font_size": 16,
   "buffer_font_size": 15,
-  "theme": "Min Dark (Solid)",
+  "theme": "JetBrains Dark",
 }
