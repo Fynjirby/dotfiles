@@ -7,6 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "format_on_save": "on",
   "gutter": {
     "min_line_number_digits": 0
   },
@@ -37,7 +38,7 @@
     },
   },
   "prettier": {
-    "allowed": true,
+    "allowed": false,
   },
   "scrollbar": {
     "show": "auto",
@@ -48,8 +49,8 @@
   "ui_font_family": ".ZedSans",
   "buffer_font_family": ".ZedMono",
   "auto_update": false,
-  "use_system_prompts": false,
-  "use_system_path_prompts": false,
+  "use_system_prompts": true,
+  "use_system_path_prompts": true,
   "disable_ai": true,
   "debugger": {
     "dock": "right",
