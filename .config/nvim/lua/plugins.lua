@@ -1,12 +1,12 @@
 local plugins = {
     { "nvim-treesitter/nvim-treesitter", branch = "master", lazy = false, build = ":TSUpdate" },
+    { "neovim/nvim-lspconfig" },
     {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         opts = {
             ensure_installed = { "gopls", "clangd", "lua-language-server" },
         },
     },
-    { "neovim/nvim-lspconfig" },
     {
         "mhartington/formatter.nvim",
         ft = { "c", "h", "make", "lua" },
@@ -66,6 +66,28 @@ local plugins = {
             })
         end,
     },
+
+    {
+        "ray-x/go.nvim",
+        dependencies = {
+            "ray-x/guihua.lua",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = function(opts)
+            require("go").setup(opts)
+            local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
+            vim.api.nvim_create_autocmd("BufWritePre", {
+                pattern = "*.go",
+                callback = function()
+                    require("go.format").goimports()
+                end,
+                group = format_sync_grp,
+            })
+        end,
+        event = { "CmdlineEnter" },
+        ft = { "go", "gomod" },
+        build = ':lua require("go.install").update_all_sync()',
+    },
     {
         "nanozuki/tabby.nvim",
         opts = {
@@ -89,26 +111,10 @@ local plugins = {
         },
     },
     {
-        "ray-x/go.nvim",
+        "nvim-lualine/lualine.nvim",
         dependencies = {
-            "ray-x/guihua.lua",
-            "neovim/nvim-lspconfig",
-            "nvim-treesitter/nvim-treesitter",
+            "nvim-tree/nvim-web-devicons",
         },
-        config = function(lp, opts)
-            require("go").setup(opts)
-            local format_sync_grp = vim.api.nvim_create_augroup("GoFormat", {})
-            vim.api.nvim_create_autocmd("BufWritePre", {
-                pattern = "*.go",
-                callback = function()
-                    require("go.format").goimports()
-                end,
-                group = format_sync_grp,
-            })
-        end,
-        event = { "CmdlineEnter" },
-        ft = { "go", "gomod" },
-        build = ':lua require("go.install").update_all_sync()',
     },
     {
         "lewis6991/gitsigns.nvim",
@@ -129,25 +135,6 @@ local plugins = {
                 follow_files = true,
             },
         },
-    },
-    {
-        "nvim-lualine/lualine.nvim",
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
-    },
-    {
-        "hrsh7th/nvim-compe",
-        config = function()
-            require("compe").setup({
-                enabled = true,
-                autocomplete = true,
-                source = {
-                    buffer = true,
-                    path = true,
-                },
-            })
-        end,
     },
     {
         "nvim-tree/nvim-tree.lua",
@@ -183,7 +170,7 @@ local plugins = {
             })
         end,
     },
-    { "windwp/nvim-autopairs", dependencies = { "nvim-cmp" } },
-    -- add more plugins here
+    { "hrsh7th/nvim-compe" },
+    { "windwp/nvim-autopairs" },
 }
 return plugins

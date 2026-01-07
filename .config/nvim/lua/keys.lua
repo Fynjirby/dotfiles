@@ -1,6 +1,3 @@
-local M = {}
-
-function M.setup()
     vim.g.mapleader = ","
 
     vim.keymap.set("n", "<leader>n", ":tabnew<CR>")
@@ -22,9 +19,10 @@ function M.setup()
 
     vim.keymap.set("n", "<leader>a", function()
         vim.lsp.buf.code_action()
-        vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-        vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     end, { noremap = true, silent = true })
+
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
     vim.api.nvim_set_keymap(
         "i",
@@ -32,6 +30,3 @@ function M.setup()
         'pumvisible() ? "<C-n>" : "<Tab>"',
         { expr = true, noremap = true, silent = true }
     )
-end
-
-return M

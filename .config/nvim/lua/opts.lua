@@ -1,4 +1,3 @@
-vim.cmd("syntax on")
 vim.opt.number = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -103,7 +102,6 @@ require("lualine").setup({
 
 require("nvim-autopairs").setup({
     check_ts = true,
-    disable_filetype = { "TelescopePrompt", "vim" },
     fast_wrap = {
         map = "<M-e>",
         chars = { "{", "[", "(", '"', "'" },
@@ -117,6 +115,11 @@ require("nvim-autopairs").setup({
     },
 })
 
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-local cmp = require("cmp")
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+require("compe").setup({
+    enabled = true,
+    autocomplete = true,
+    source = {
+        buffer = true,
+        path = true,
+    },
+})

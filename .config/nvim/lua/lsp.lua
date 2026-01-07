@@ -1,5 +1,5 @@
 require("nvim-treesitter.configs").setup({
-    ensure_installed = { "lua", "vim", "vimdoc", "markdown", "go", "rust", "bash" },
+    ensure_installed = { "lua", "vim", "vimdoc", "markdown", "go", "bash" },
     highlight = { enable = true },
     indent = { enable = true },
 })
@@ -45,16 +45,8 @@ vim.lsp.config.lua_ls = {
     on_attach = on_attach,
 }
 
-vim.lsp.config.rust_analyzer = {
-    cmd = { "rust-analyzer" },
-    filetypes = { "rust" },
-    root_markers = { "Cargo.toml", ".git" },
-    capabilities = capabilities,
-    on_attach = on_attach,
-}
-
 vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.c", "*.h", "*.cpp", "*.hpp", ".go", ".lua", ".sh", ".rs" },
+    pattern = { "*.c", "*.h", "*.cpp", "*.hpp", "*.go", ".lua", "*.sh" },
     callback = function()
         vim.lsp.buf.format({ async = false })
     end,
@@ -63,4 +55,3 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 vim.lsp.enable("gopls")
 vim.lsp.enable("clangd")
 vim.lsp.enable("lua_ls")
-vim.lsp.enable("rust_analyzer")
