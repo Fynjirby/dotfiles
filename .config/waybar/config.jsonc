@@ -3,7 +3,7 @@
   "position": "bottom",
   "height": 24,
   "modules-left": ["custom/archlogo", "hyprland/workspaces", "hyprland/window"],
-  "modules-center": ["mpris#browser", "mpris#strwb", "mpris#spotify"],
+  "modules-center": ["mpris#strwb", "mpris#spotify"],
   "modules-right": [
     "tray",
     "pulseaudio",
@@ -24,18 +24,6 @@
   "hyprland/workspaces": {
     "on-scroll-up": "hyprctl dispatch workspace e-1",
     "on-scroll-down": "hyprctl dispatch workspace e+1",
-  },
-  "mpris#browser": {
-    "player": "firefox",
-    "format": " 🏴‍☠️ {status_icon} {title} ",
-    "status-icons": {
-      "playing": "",
-      "paused": "",
-      "stopped": "",
-    },
-    "max-length": 40,
-    "on-click": "playerctl --player=firefox play-pause",
-    "on-click-right": "playerctl --player=firefox stop",
   },
   "mpris#strwb": {
     "player": "strawberry",

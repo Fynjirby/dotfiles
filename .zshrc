@@ -17,7 +17,8 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export EDITOR=vim
+export EDITOR=nvim
+export VISUAL=nvim
 export TERMINAL=alacritty
 
 # bun
