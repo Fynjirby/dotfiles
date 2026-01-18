@@ -4,7 +4,7 @@ normal = {family = "FiraCode Nerd Font Mono"}
 # to see icons install ttf-joypixels or ttf-apple-emoji for example
 
 [colors.primary]
-background = "#0c0c0c"
+background = "#0d0d0d"
 
 [window.padding]
 x = 5

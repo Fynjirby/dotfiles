@@ -6,59 +6,64 @@
 }
 
 #waybar {
-    background-color: rgba(12, 12, 12, 0.85);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 tooltip {
     background: rgba(12, 12, 12, 0.85);
-    border-radius: 8px;
+    border-radius: 6px;
     color: #e0e0e0;
     font-size: 12px;
 }
 
 #custom-archlogo {
-    padding: 0 12px 0 8px;
-    margin: 0 6px;
+    padding: 0 13px 0 8px;
+    margin: 2px 2px 2px 4px;
     font-size: 16px;
+    background-color: #0d0d0d;
+    border-radius: 6px;
+}
+
+#workspaces {
+    background-color: #0d0d0d;
+    margin: 2px 4px;
+    border-radius: 6px;
 }
 
 #workspaces button {
-    padding: 1px 8px;
-    margin: 2px;
+    padding: 0 6px;
+    margin: 0 2px;
     transition: 0.2s all;
 }
 
 #workspaces button.active {
-    box-shadow: inset 0 -3px #dcdfe1;
-    border-radius: 4px;
+    box-shadow: inset 0 -2px #dcdfe1;
+    border-radius: 3px;
 }
 
-/*
-#workspaces button.urgent {
-    background-color: #eb4d4b;
-}
-*/
-
-#mode,
-#window,
-#scratchpad,
-#pulseaudio,
-#language,
-#memory,
-#cpu {
-    padding: 2px 6px;
-    background-color: #2e2e2e;
-    border-radius: 8px;
-    margin: 3px;
+#window {
+    padding: 0 8px;
+    background-color: #0d0d0d;
+    border-radius: 6px;
+    margin: 2px;
 }
 
-#pulseaudio,
-#language,
-#custom-vpn,
-#network,
-#memory,
-#cpu {
-    padding: 2px 1px;
+#clock {
+    padding: 0 8px;
+    background-color: #0d0d0d;
+    border-radius: 6px;
+    margin: 2px;
+}
+
+#tray {
+    margin: 0 6px;
+}
+
+#pulseaudio {
+    padding: 0 8px;
+    background-color: #0d0d0d;
+    border-radius: 6px;
+    margin: 2px;
 }
 
 #pulseaudio.muted {
@@ -66,18 +71,38 @@ tooltip {
 }
 
 #language {
-    min-width: 40px;
+    background-color: #0d0d0d;
+    border-radius: 6px;
+    margin: 2px;
+    min-width: 36px;
+}
+
+#network {
+    padding: 0 6px;
+    margin: 2px;
 }
 
 #custom-vpn {
     padding-right: 12px;
 }
 
-#tray {
-    margin: 0 8px;
+#memory {
+    padding: 2px 8px;
+    background-color: #0d0d0d;
+    border-radius: 6px;
+    margin: 2px;
 }
 
-#clock {
-    margin-left: 8px;
-    margin-right: 12px;
+#cpu {
+    padding: 2px 8px;
+    background-color: #0d0d0d;
+    border-radius: 6px;
+    margin: 2px;
+}
+
+#mpris.spotify {
+    padding: 0 8px;
+    background-color: #0d0d0d;
+    border-radius: 6px;
+    margin: 2px 4px 2px 2px;
 }
