@@ -1,6 +1,8 @@
 {
   "layer": "top",
   "position": "top",
+  "margin-left": 2,
+  "margin-right": 2,
   "modules-left": ["custom/archlogo", "hyprland/workspaces", "hyprland/window"],
   "modules-center": ["clock"],
   "modules-right": [
@@ -38,7 +40,7 @@
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
-    "format-muted": " <span color='#FF4040'>󰖁 </span>Muted ",
+    "format-muted": "<span color='#FF4040'>󰖁 </span>Muted",
     "format-icons": {
       "headset": " ",
       "default": [
