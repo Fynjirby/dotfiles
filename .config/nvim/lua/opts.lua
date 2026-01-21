@@ -10,7 +10,6 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.signcolumn = "yes"
 vim.opt.visualbell = true
-vim.opt.termguicolors = true
 vim.opt.showmode = false
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("config") .. "/undo"
@@ -190,14 +189,5 @@ require("nvim-autopairs").setup({
         check_comma = true,
         highlight = "Search",
         highlight_grey = "Comment",
-    },
-})
-
-require("compe").setup({
-    enabled = true,
-    autocomplete = true,
-    source = {
-        buffer = true,
-        path = true,
     },
 })

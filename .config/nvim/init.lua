@@ -22,6 +22,7 @@ require("lazy").setup({
 vim.cmd.colorscheme("habamax")
 vim.opt.termguicolors = true
 
+require("lazy.core.config").options.checker.enabled = false
 require("opts")
 require("lsp")
 require("keys")

@@ -1,32 +1,93 @@
-    vim.g.mapleader = ","
+vim.g.mapleader = ","
 
-    vim.keymap.set("n", "<leader>n", ":tabnew<CR>")
-    vim.keymap.set("n", "<leader>c", ":tabclose<CR>")
-    vim.keymap.set("n", "<leader>q", ":bd<CR>")
-    vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle file explorer" })
-    vim.keymap.set("n", "<leader>f", ":NvimTreeFocus<CR>", { desc = "Focus file explorer" })
+vim.keymap.set("n", ",n", ":tabnew<CR>", { silent = true, desc = "New Tab" })
+vim.keymap.set("n", ",c", ":tabclose<CR>", { silent = true, desc = "Close Tab" })
+vim.keymap.set("n", ",q", ":bd<CR>", { silent = true, desc = "Close Buffer" })
+vim.keymap.set("n", ",e", ":NvimTreeToggle<CR>", { silent = true, desc = "Toggle file explorer" })
+vim.keymap.set("n", ",f", ":NvimTreeFocus<CR>", { silent = true, desc = "Focus file explorer" })
 
-    for i = 1, 8 do
-        vim.keymap.set("n", "<leader>" .. i, i .. "gt")
+vim.keymap.set("n", "<leader>og", function()
+    vim.g.compile_method = "gcc"
+    print("Compile method set to GCC")
+end, { noremap = true, silent = false, desc = "GCC" })
+
+vim.keymap.set("n", "<leader>oc", function()
+    vim.g.compile_method = "clang"
+    print("Compile method set to Clang")
+end, { noremap = true, silent = false, desc = "Clang" })
+
+vim.keymap.set("n", "<leader>om", function()
+    vim.g.compile_method = "make"
+    print("Compile method set to Make")
+end, { noremap = true, silent = false, desc = "Make" })
+
+vim.keymap.set("n", "<leader>ob", function()
+    vim.g.compile_method = "go"
+    print("Compile method set to Go build")
+end, { noremap = true, silent = false, desc = "Go build" })
+
+local function compile()
+    if vim.g.compile_method == "gcc" then
+        vim.cmd(":!gcc % -o %:r")
+    elseif vim.g.compile_method == "clang" then
+        vim.cmd(":!clang % -o %:r")
+    elseif vim.g.compile_method == "make" then
+        vim.cmd(":!make")
+    elseif vim.g.compile_method == "go" then
+        vim.cmd(":!go build -o %:r %")
+    else
+        print("No compile method selected. Use <leader>o to set.")
     end
+end
 
-    vim.keymap.set("n", "<Esc>", ":noh<CR>")
+local function run()
+    if vim.g.compile_method == "gcc" or vim.g.compile_method == "clang" or vim.g.compile_method == "go" then
+        vim.cmd(":!./%:r")
+    elseif vim.g.compile_method == "make" then
+        vim.cmd(":!make run")
+    else
+        print("No compile method selected. Use <leader>o to set.")
+    end
+end
 
-    vim.keymap.set("n", "H", "^")
-    vim.keymap.set("n", "L", "$")
-    vim.keymap.set("v", "H", "^")
-    vim.keymap.set("v", "L", "$")
+vim.keymap.set("n", "<leader>d", compile, { noremap = true, silent = false, desc = "Compile" })
+vim.keymap.set("n", "<leader>r", run, { noremap = true, silent = false, desc = "Run" })
+vim.keymap.set("n", "<leader>b", function()
+    compile()
+    run()
+end, { noremap = true, silent = false, desc = "Compile and run" })
 
-    vim.keymap.set("n", "<leader>a", function()
-        vim.lsp.buf.code_action()
-    end, { noremap = true, silent = true })
+for i = 1, 8 do
+    vim.keymap.set("n", "<leader>" .. i, i .. "gt", { desc = "Go to N tab" })
+end
 
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+vim.keymap.set("n", "<Esc>", ":noh<CR>", { silent = true, desc = "No highlight" })
 
-    vim.api.nvim_set_keymap(
-        "i",
-        "<Tab>",
-        'pumvisible() ? "<C-n>" : "<Tab>"',
-        { expr = true, noremap = true, silent = true }
-    )
+vim.keymap.set("n", "H", "^")
+vim.keymap.set("n", "L", "$")
+vim.keymap.set("v", "H", "^")
+vim.keymap.set("v", "L", "$")
+
+vim.keymap.set("n", "<leader>a", function()
+    vim.lsp.buf.code_action()
+end, { noremap = true, silent = true, desc = "See code actions" })
+
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Hover quick info" })
+vim.keymap.set("n", "<leader>td", function()
+    local is_enabled = vim.diagnostic.is_enabled()
+    if is_enabled then
+        vim.diagnostic.enable(false)
+        print("Diagnostics disabled")
+    else
+        vim.diagnostic.enable(true)
+        print("Diagnostics enabled")
+    end
+end, { noremap = true, silent = true, desc = "Toggle Diagnostics" })
+
+vim.api.nvim_set_keymap(
+    "i",
+    "<Tab>",
+    'pumvisible() ? "<C-n>" : "<Tab>"',
+    { expr = true, noremap = true, silent = true, desc = "Autocomplete" }
+)

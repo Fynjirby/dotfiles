@@ -19,6 +19,7 @@ export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export EDITOR=nvim
 export VISUAL=nvim
+export PAGER=bat
 export TERMINAL=alacritty
 
 # bun

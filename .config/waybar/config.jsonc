@@ -29,7 +29,7 @@
   "clock": {
     "interval": 1,
     "timezone": "Europe/Moscow",
-    "format": "{:%A! %H:%M:%S}",
+    "format": "{:%d %A! %H:%M:%S}",
     "tooltip": true,
     "tooltip-format": "<big>{:L%B! %d.%m.%Y}</big>\n\n<tt><small>{calendar}</small></tt>",
     "locale": "en_GB.ISO-8859-1",
@@ -93,7 +93,7 @@
       "paused": "",
       "stopped": "",
     },
-    "max-length": 50,
+    "max-length": 35,
     "on-click": "playerctl --player=spotify play-pause",
     "on-click-right": "playerctl --player=spotify stop",
     "on-scroll-up": "playerctl --player=spotify previous",

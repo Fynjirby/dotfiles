@@ -70,7 +70,6 @@ local plugins = {
     {
         "ray-x/go.nvim",
         dependencies = {
-            "ray-x/guihua.lua",
             "nvim-treesitter/nvim-treesitter",
         },
         config = function(opts)
@@ -170,7 +169,48 @@ local plugins = {
             })
         end,
     },
-    { "hrsh7th/nvim-compe" },
+    {
+        "hrsh7th/nvim-cmp",
+        lazy = true,
+        enabled = enable_cmp,
+        dependencies = {
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+        },
+        config = function()
+            local cmp = require("cmp")
+            cmp.setup({
+                window = {},
+                mapping = cmp.mapping.preset.insert({
+                    ["<C-Space>"] = cmp.mapping.complete(),
+                    ["<CR>"] = cmp.mapping.confirm({ select = false }),
+                    ["<Tab>"] = cmp.mapping.confirm({ select = true }),
+                    ["<C-e>"] = cmp.mapping.abort(),
+                }),
+                sources = {
+                    { name = "nvim_lsp" },
+                    { name = "buffer" },
+                    { name = "path" },
+                },
+            })
+        end,
+    },
+    {
+        "hrsh7th/cmp-nvim-lsp",
+        event = enable_cmp and "VeryLazy" or nil,
+        enabled = enable_cmp,
+        dependencies = {
+            "neovim/nvim-lspconfig",
+            "hrsh7th/nvim-cmp",
+        },
+        config = function()
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+        end,
+    },
     { "windwp/nvim-autopairs" },
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+    },
 }
 return plugins
