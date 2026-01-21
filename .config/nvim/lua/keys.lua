@@ -27,14 +27,17 @@ vim.keymap.set("n", "<leader>ob", function()
 end, { noremap = true, silent = false, desc = "Go build" })
 
 local function compile()
-    if vim.g.compile_method == "gcc" then
-        vim.cmd(":!gcc % -o %:r")
-    elseif vim.g.compile_method == "clang" then
-        vim.cmd(":!clang % -o %:r")
-    elseif vim.g.compile_method == "make" then
-        vim.cmd(":!make")
-    elseif vim.g.compile_method == "go" then
-        vim.cmd(":!go build -o %:r %")
+    local method = vim.g.compile_method
+    local fname = vim.fn.expand("%")
+    local base = vim.fn.expand("%:r")
+    if method == "gcc" then
+        vim.cmd("!gcc " .. fname .. " -o " .. base)
+    elseif method == "clang" then
+        vim.cmd("!clang " .. fname .. " -o " .. base)
+    elseif method == "make" then
+        vim.cmd("!make")
+    elseif method == "go" then
+        vim.cmd("!go build -o " .. base .. " " .. fname)
     else
         print("No compile method selected. Use <leader>o to set.")
     end
@@ -85,7 +88,19 @@ vim.keymap.set("n", "<leader>td", function()
     end
 end, { noremap = true, silent = true, desc = "Toggle Diagnostics" })
 
-vim.api.nvim_set_keymap(
+vim.keymap.set("n", "<leader>tr", function()
+    local is_enabled = vim.wo.relativenumber
+
+    if is_enabled then
+        vim.wo.relativenumber = false
+        print("Relative numbers disabled")
+    else
+        vim.wo.relativenumber = true
+        print("Relative numbers enabled")
+    end
+end, { noremap = true, silent = true, desc = "Toggle Relative Numbers" })
+
+vim.keymap.set(
     "i",
     "<Tab>",
     'pumvisible() ? "<C-n>" : "<Tab>"',

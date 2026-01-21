@@ -61,7 +61,7 @@ local plugins = {
             })
 
             vim.api.nvim_create_autocmd("BufWritePost", {
-                pattern = { "*.c", "*.h", "Makefile", "*.sh", "*.lua" },
+                pattern = { "*.c", "*.h", "Makefile", "*.sh", "*.lua", "*.cpp", "*.hpp", "*.zc", "Makefile" },
                 command = "FormatWrite",
             })
         end,
@@ -172,7 +172,6 @@ local plugins = {
     {
         "hrsh7th/nvim-cmp",
         lazy = true,
-        enabled = enable_cmp,
         dependencies = {
             "hrsh7th/cmp-buffer",
             "hrsh7th/cmp-path",
@@ -197,15 +196,11 @@ local plugins = {
     },
     {
         "hrsh7th/cmp-nvim-lsp",
-        event = enable_cmp and "VeryLazy" or nil,
-        enabled = enable_cmp,
+        event = "VeryLazy",
         dependencies = {
             "neovim/nvim-lspconfig",
             "hrsh7th/nvim-cmp",
         },
-        config = function()
-            local capabilities = require("cmp_nvim_lsp").default_capabilities()
-        end,
     },
     { "windwp/nvim-autopairs" },
     {

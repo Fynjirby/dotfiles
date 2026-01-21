@@ -29,13 +29,10 @@ vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" })
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "#181818" })
 vim.api.nvim_set_hl(0, "Visual", { bg = "#252525" })
 
-vim.api.nvim_set_hl(0, "LualineBranch", { fg = "#E0E0E0", bg = "#202020", bold = true })
-vim.api.nvim_set_hl(0, "LualineGitAdd", { fg = "#98C379", bg = "#202020", bold = true })
-vim.api.nvim_set_hl(0, "LualineGitChange", { fg = "#E5C07B", bg = "#202020", bold = true })
-vim.api.nvim_set_hl(0, "LualineGitDelete", { fg = "#E06C75", bg = "#202020", bold = true })
-
 require("lualine").setup({
     options = {
+        component_separators = "",
+        section_separators = "",
         theme = {
             normal = {
                 a = { fg = "#E0E0E0", bg = "#202020" },
@@ -43,119 +40,69 @@ require("lualine").setup({
                 c = { fg = "#AAAAAA", bg = "#101010" },
             },
         },
-        component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
+        globalstatus = true,
     },
     sections = {
         lualine_a = {
             {
                 function()
-                    local mode = vim.fn.mode()
-                    local modes = {
-                        n = "NORMAL",
-                        i = "INSERT",
-                        v = "VISUAL",
-                        V = "V-LINE",
-                        ["\22"] = "V-BLOCK",
-                        c = "COMMAND",
-                        r = "REPLACE",
-                    }
-
-                    local name = modes[mode] or mode:upper()
-                    local icon = " " or ""
-
-                    return icon .. name
+                    return ""
+                end,
+                color = { fg = "#0C0C0C", bg = "#0C0C0C" },
+            },
+            {
+                "mode",
+                fmt = function(mode)
+                    return " " .. mode
                 end,
                 separator = { left = "", right = "" },
-                padding = { left = 0, right = 0 },
+                padding = 0,
                 color = function()
-                    local mode = vim.fn.mode()
-                    if mode == "n" then
+                    local m = vim.fn.mode()
+                    if m == "n" then
                         return { fg = "#1E222A", bg = "#7AA2F7", gui = "bold" }
-                    elseif mode == "i" then
+                    elseif m == "i" then
                         return { fg = "#202020", bg = "#98C379", gui = "bold" }
-                    elseif mode == "v" or mode == "V" then
+                    elseif m == "v" or m == "V" or m == "" then
                         return { fg = "#202020", bg = "#C678DD", gui = "bold" }
-                    elseif mode == "c" then
+                    elseif m == "c" then
                         return { fg = "#202020", bg = "#E5C07B", gui = "bold" }
                     end
                     return { fg = "#E0E0E0", bg = "#202020", gui = "bold" }
                 end,
             },
             {
-                function()
-                    local branch = vim.b.gitsigns_head
-                    if not branch or branch == "" then
-                        return ""
-                    end
-
-                    local gs = vim.b.gitsigns_status_dict or {}
-                    local parts = {}
-
-                    table.insert(parts, "%#LualineBranch# " .. branch .. " %*")
-
-                    if gs.added and gs.added > 0 then
-                        table.insert(parts, "%#LualineGitAdd#+" .. gs.added .. " %*")
-                    end
-                    if gs.changed and gs.changed > 0 then
-                        table.insert(parts, "%#LualineGitChange#~" .. gs.changed .. " %*")
-                    end
-                    if gs.removed and gs.removed > 0 then
-                        table.insert(parts, "%#LualineGitDelete#-" .. gs.removed .. " %*")
-                    end
-
-                    return table.concat(parts)
-                end,
+                "branch",
+                icon = "",
                 separator = { left = "", right = "" },
+                padding = 1,
+                color = { fg = "#E0E0E0", bg = "#202020", gui = "bold" },
+            },
+            {
+                "diff",
+                symbols = { added = "+", modified = "~", removed = "-" },
+                separator = { right = "" },
                 padding = 0,
-                cond = function()
-                    return vim.b.gitsigns_head ~= nil
-                end,
+                diff_color = {
+                    added = { fg = "#98C379" },
+                    modified = { fg = "#E5C07B" },
+                    removed = { fg = "#E06C75" },
+                },
             },
         },
         lualine_b = {},
-        lualine_y = {
-            {
-                function()
-                    local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-                    local clients = vim.lsp.get_clients({ bufnr = 0 })
-                    if next(clients) == nil then
-                        return "No LSP"
-                    end
-                    for _, client in ipairs(clients) do
-                        local filetypes = client.config.filetypes
-                        if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                            return client.name
-                        end
-                    end
-                    return "No LSP"
-                end,
-                icon = "",
-                color = { fg = "#DCDCCC", bg = "#101010", gui = "bold" },
-            },
-            {
-                "progress",
-                color = { fg = "#DCDCCC", gui = "bold" },
-                separator = { left = "" },
-            },
-            {
-                "location",
-                color = { fg = "#DCDCCC" },
-            },
-        },
-        lualine_z = {},
         lualine_c = {
             {
                 function()
                     local devicons = require("nvim-web-devicons")
-                    local filename = vim.fn.expand("%:t")
-                    local icon, icon_color = devicons.get_icon_color(filename, vim.fn.expand("%:e"), { default = true })
-                    return icon .. " " .. filename
+                    local name = vim.fn.expand("%:t")
+                    local icon = devicons.get_icon(name, vim.fn.expand("%:e"), { default = true })
+                    return icon .. " " .. name
                 end,
-                color = { gui = "bold" },
                 cond = function()
                     return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
                 end,
+                color = { gui = "bold" },
             },
             {
                 "diagnostics",
@@ -174,6 +121,43 @@ require("lualine").setup({
             },
         },
         lualine_x = {},
+        lualine_y = {
+            {
+                function()
+                    local ft = vim.bo.filetype
+                    for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+                        if client.config.filetypes and vim.tbl_contains(client.config.filetypes, ft) then
+                            return client.name
+                        end
+                    end
+                    return "No LSP"
+                end,
+                icon = "",
+                color = { fg = "#DCDCCC", bg = "#101010", gui = "bold" },
+            },
+            {
+                "progress",
+                separator = { left = "" },
+                color = { fg = "#DCDCCC", gui = "bold" },
+            },
+            {
+                "location",
+                color = { fg = "#DCDCCC" },
+            },
+            {
+                function()
+                    return "󰈚 " .. vim.fn.line("$")
+                end,
+            },
+            {
+                function()
+                    return ""
+                end,
+                color = { fg = "#1A1A1A", bg = "#0C0C0C" },
+                padding = 0,
+            },
+        },
+        lualine_z = {},
     },
 })
 

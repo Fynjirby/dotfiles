@@ -11,7 +11,6 @@ vim.lsp.config.gopls = {
     filetypes = { "go", "gomod", "gowork", "gotmpl" },
     root_markers = { "go.work", "go.mod", ".git" },
     capabilities = capabilities,
-    on_attach = on_attach,
 }
 
 vim.lsp.config.clangd = {
@@ -19,7 +18,6 @@ vim.lsp.config.clangd = {
     filetypes = { "c", "cpp", "objc", "objcpp", "h", "hpp" },
     root_markers = { ".clangd", ".clang-tidy", "compile_commands.json", "compile_flags.txt", ".git" },
     capabilities = capabilities,
-    on_attach = on_attach,
 }
 
 vim.lsp.config.lua_ls = {
@@ -42,15 +40,7 @@ vim.lsp.config.lua_ls = {
         },
     },
     capabilities = capabilities,
-    on_attach = on_attach,
 }
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = { "*.c", "*.h", "*.cpp", "*.hpp", "*.go", ".lua", "*.sh" },
-    callback = function()
-        vim.lsp.buf.format({ async = false })
-    end,
-})
 
 vim.lsp.enable("gopls")
 vim.lsp.enable("clangd")
