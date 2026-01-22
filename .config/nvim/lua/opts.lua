@@ -1,4 +1,3 @@
-vim.cmd("syntax on")
 vim.opt.number = true
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
@@ -11,61 +10,98 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.signcolumn = "yes"
 vim.opt.visualbell = true
-vim.opt.termguicolors = true
+vim.opt.showmode = false
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.stdpath("config") .. "/undo"
 vim.opt.undolevels = 1000
 vim.opt.clipboard = "unnamed" -- or "unnamedplus" for Linux
 
-vim.api.nvim_set_hl(0, "Normal", { bg = "#181818" })
-vim.api.nvim_set_hl(0, "NonText", { bg = "#181818" })
-vim.api.nvim_set_hl(0, "LineNr", { bg = "#181818" })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "#181818" })
-
-vim.api.nvim_set_hl(0, "TabLine", { fg = "#8F908A", bg = "#2B2B2B" }) -- unactive
-vim.api.nvim_set_hl(0, "TabLineSel", { fg = "#DCDCCC", bg = "#4e8a4e" }) -- active
-vim.api.nvim_set_hl(0, "TabLineFill", { bg = "#181818" }) -- bg
-vim.api.nvim_set_hl(0, "TabLineSep", { fg = "#3C3C3C", bg = "#1C1C1C" }) -- sepparators
-
-vim.api.nvim_set_hl(0, "VertSplit", { fg = "#767676", bg = "#181818" })
+vim.api.nvim_set_hl(0, "Normal", { bg = "#101010" })
+vim.api.nvim_set_hl(0, "NonText", { bg = "#101010" })
+vim.api.nvim_set_hl(0, "LineNr", { bg = "#101010" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "#101010" })
+vim.api.nvim_set_hl(0, "VertSplit", { fg = "#2A2A2A", bg = "#101010" })
+vim.api.nvim_set_hl(0, "StatusLine", { fg = "#2A2A2A", bg = "#101010" })
+vim.api.nvim_set_hl(0, "TabLine", { fg = "#8F908A", bg = "#2B2B2B" })
+vim.api.nvim_set_hl(0, "TabLineSel", { fg = "#DCDCCC", bg = "#4E8A4E" })
+vim.api.nvim_set_hl(0, "TabLineFill", { bg = "none" })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "#181818" })
+vim.api.nvim_set_hl(0, "Visual", { bg = "#252525" })
 
 require("lualine").setup({
     options = {
+        component_separators = "",
+        section_separators = "",
         theme = {
             normal = {
-                a = { fg = "#FFFFFF", bg = "#333333" },
-                b = { fg = "#FFFFFF", bg = "#202020" },
-                c = { fg = "#AAAAAA", bg = "#202020" },
-            },
-            insert = { a = { fg = "#FFFFFF", bg = "#444444" } },
-            visual = { a = { fg = "#FFFFFF", bg = "#555555" } },
-            replace = { a = { fg = "#FFFFFF", bg = "#660000" } },
-            inactive = {
-                a = { fg = "#AAAAAA", bg = "#222222" },
-                b = { fg = "#AAAAAA", bg = "#222222" },
-                c = { fg = "#AAAAAA", bg = "#222222" },
+                a = { fg = "#E0E0E0", bg = "#202020" },
+                b = { fg = "#CCCCCC", bg = "#1A1A1A" },
+                c = { fg = "#AAAAAA", bg = "#101010" },
             },
         },
-        component_separators = { left = "", right = "" },
-        section_separators = { left = "", right = "" },
+        globalstatus = true,
     },
     sections = {
-        lualine_a = {},
+        lualine_a = {
+            {
+                function()
+                    return ""
+                end,
+                color = { fg = "#101010", bg = "#101010" },
+            },
+            {
+                "mode",
+                fmt = function(mode)
+                    return " " .. mode
+                end,
+                separator = { left = "", right = "" },
+                padding = 0,
+                color = function()
+                    local m = vim.fn.mode()
+                    if m == "n" then
+                        return { fg = "#1E222A", bg = "#7AA2F7", gui = "bold" }
+                    elseif m == "i" then
+                        return { fg = "#202020", bg = "#98C379", gui = "bold" }
+                    elseif m == "v" or m == "V" or m == "" then
+                        return { fg = "#202020", bg = "#C678DD", gui = "bold" }
+                    elseif m == "c" then
+                        return { fg = "#202020", bg = "#E5C07B", gui = "bold" }
+                    end
+                    return { fg = "#E0E0E0", bg = "#202020", gui = "bold" }
+                end,
+            },
+            {
+                "branch",
+                icon = "",
+                separator = { left = "", right = "" },
+                padding = 1,
+                color = { fg = "#E0E0E0", bg = "#202020", gui = "bold" },
+            },
+            {
+                "diff",
+                symbols = { added = "+", modified = "~", removed = "-" },
+                separator = { right = "" },
+                padding = 0,
+                diff_color = {
+                    added = { fg = "#98C379" },
+                    modified = { fg = "#E5C07B" },
+                    removed = { fg = "#E06C75" },
+                },
+            },
+        },
         lualine_b = {},
-        lualine_y = {},
-        lualine_z = {},
         lualine_c = {
             {
                 function()
                     local devicons = require("nvim-web-devicons")
-                    local filename = vim.fn.expand("%:t")
-                    local icon, icon_color = devicons.get_icon_color(filename, vim.fn.expand("%:e"), { default = true })
-                    return icon .. " " .. filename
+                    local name = vim.fn.expand("%:t")
+                    local icon = devicons.get_icon(name, vim.fn.expand("%:e"), { default = true })
+                    return icon .. " " .. name
                 end,
-                color = { gui = "bold" },
                 cond = function()
                     return vim.fn.empty(vim.fn.expand("%:t")) ~= 1
                 end,
+                color = { gui = "bold" },
             },
             {
                 "diagnostics",
@@ -82,35 +118,50 @@ require("lualine").setup({
                     return "%="
                 end,
             },
+        },
+        lualine_x = {},
+        lualine_y = {
             {
                 function()
-                    local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-                    local clients = vim.lsp.get_clients({ bufnr = 0 })
-                    if next(clients) == nil then
-                        return "No LSP"
-                    end
-                    for _, client in ipairs(clients) do
-                        local filetypes = client.config.filetypes
-                        if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                    local ft = vim.bo.filetype
+                    for _, client in ipairs(vim.lsp.get_clients({ bufnr = 0 })) do
+                        if client.config.filetypes and vim.tbl_contains(client.config.filetypes, ft) then
                             return client.name
                         end
                     end
                     return "No LSP"
                 end,
                 icon = "",
+                color = { fg = "#DCDCCC", bg = "#101010", gui = "bold" },
+            },
+            {
+                "progress",
+                separator = { left = "" },
                 color = { fg = "#DCDCCC", gui = "bold" },
             },
+            {
+                "location",
+                color = { fg = "#DCDCCC" },
+            },
+            {
+                function()
+                    return "󰈚 " .. vim.fn.line("$")
+                end,
+            },
+            {
+                function()
+                    return ""
+                end,
+                color = { fg = "#1A1A1A", bg = "#101010" },
+                padding = 0,
+            },
         },
-        lualine_x = {
-            { "progress", color = { fg = "#DCDCCC", gui = "bold" } },
-            { "location", color = { fg = "#DCDCCC" } },
-        },
+        lualine_z = {},
     },
 })
 
 require("nvim-autopairs").setup({
     check_ts = true,
-    disable_filetype = { "TelescopePrompt", "vim" },
     fast_wrap = {
         map = "<M-e>",
         chars = { "{", "[", "(", '"', "'" },
@@ -123,7 +174,3 @@ require("nvim-autopairs").setup({
         highlight_grey = "Comment",
     },
 })
-
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-local cmp = require("cmp")
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

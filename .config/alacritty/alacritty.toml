@@ -1,6 +1,9 @@
 [font]
-size = 18
+size = 17
 normal = {family = "FiraCode Nerd Font Mono"}
+
+[colors.primary]
+background = "#101010"
 
 [window]
 startup_mode = "Maximized"

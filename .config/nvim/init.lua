@@ -6,7 +6,6 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
         vim.api.nvim_echo({
             { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
             { out, "WarningMsg" },
-            { "\nPress any key to exit..." },
         }, true, {})
         vim.fn.getchar()
         os.exit(1)
@@ -21,7 +20,9 @@ require("lazy").setup({
 })
 
 vim.cmd.colorscheme("habamax")
+vim.opt.termguicolors = true
 
+require("lazy.core.config").options.checker.enabled = false
 require("opts")
 require("lsp")
-require("keys").setup()
+require("keys")
